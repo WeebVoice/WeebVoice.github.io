@@ -1,14 +1,3 @@
-<!--iframe container-->
-<div style="text-align: center;">
-  <small>Visit Main Site <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank"><b><span style="color: red;">WeebVoice</span></b></a></small>
-  <div id="video-container" style="height: 0px; overflow: hidden; padding-bottom: 56.25%; position: relative;">
-    <iframe allowfullscreen="" id="my-iframe" src="" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
-  </div>
-</div>
-
-<!-- Buttons Container -->
-<div id="button-container" class="button-container"></div>
-
 <!--CSS For Buttons-->
 <style>
 .button-container {

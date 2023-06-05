@@ -1,24 +1,26 @@
-<div id="video-container">
-  <iframe id="my-iframe" src="" allowfullscreen="" style="border: 0; width: 100%; height: 400px;"></iframe>
-</div>
-
+<!--JavaScript for Buttons and iframe-->
 <script>
-  // Get the video links
-  var videoLinks = document.querySelectorAll(".video-links a");
+const iframe = document.getElementById("my-iframe");
+const buttonContainer = document.getElementById("button-container");
 
-  // Get the iframe element
-  var iframe = document.getElementById("my-iframe");
+// Retrieve the video links from the post
+const videoLinks = Array.from(document.getElementsByClassName("video-links")[0].getElementsByTagName("a"));
 
-  // Function to set the iframe source
-  function setIframeSource(videoURL) {
-    iframe.src = videoURL;
-  }
+// Function to set the iframe source
+function setIframeSource(videoURL) {
+  iframe.src = videoURL;
+}
 
-  // Add click event listeners to the video links
-  videoLinks.forEach(function(link) {
-    link.addEventListener("click", function(event) {
-      event.preventDefault();
-      setIframeSource(link.href);
-    });
+// Dynamically generate buttons
+videoLinks.forEach((link, index) => {
+  const button = document.createElement("button");
+  button.textContent = "Video " + (index + 1);
+
+  // Set the iframe source when button is clicked
+  button.addEventListener("click", function() {
+    setIframeSource(link.href);
   });
+
+  buttonContainer.appendChild(button);
+});
 </script>

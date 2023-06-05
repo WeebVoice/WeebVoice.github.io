@@ -1,0 +1,63 @@
+<!--iframe container-->
+<div style="text-align: center;">
+  <small>Visit Main Site <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank"><b><span style="color: red;">WeebVoice</span></b></a></small>
+  <div id="video-container" style="height: 0px; overflow: hidden; padding-bottom: 56.25%; position: relative;">
+    <iframe allowfullscreen="" id="my-iframe" src="" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
+  </div>
+</div>
+
+<!-- Buttons Container -->
+<div id="button-container" class="button-container"></div>
+
+<!--CSS For Buttons-->
+<style>
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button {
+  margin-inline: 20px;
+  background-color: #464141;
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 125px;
+  margin-top: 25px;
+}
+
+.button-container button:hover {
+  background-color: #6d6b6b;
+}
+</style>
+
+<!--JavaScript for Buttons and iframe-->
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  const iframe = document.getElementById("my-iframe");
+  const videoLinks = Array.from(document.getElementsByClassName("video-links")[0].getElementsByTagName("a"));
+
+  // Function to set the iframe source
+  function setIframeSource(videoURL) {
+    iframe.src = videoURL;
+  }
+
+  // Dynamically generate buttons
+  videoLinks.forEach((link, index) => {
+    const button = document.createElement("button");
+    button.textContent = "Video " + (index + 1);
+
+    // Set the iframe source when button is clicked
+    button.addEventListener("click", function() {
+      setIframeSource(link.href);
+    });
+
+    // Append button to the post content
+    document.getElementById('video-container').appendChild(button);
+  });
+});
+</script>

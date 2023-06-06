@@ -1,0 +1,105 @@
+<!--iframe container-->
+<div style="text-align: center;">
+  <small>Visit Main Site <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank"><b><span style="color: red;">WeebVoice</span></b></a></small>
+  <div id="video-container" style="height: 0px; overflow: hidden; padding-bottom: 56.25%; position: relative;">
+    <iframe allowfullscreen="" id="my-iframe" src="https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 10px;">
+  <small>
+    Watch and download all episodes on 
+    <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank"><b><span style="color: red;">WeebVoice</span></b></a>
+  </small>
+</div>
+
+<!--Video Previews-->
+<div class="video-container">
+  <div class="video-preview">
+    <iframe src="https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview" frameborder="0" width="160" height="90" allowfullscreen="" style="pointer-events: none;"></iframe>
+    <span class="video-title" id="btn1">Episode 1</span>
+  </div>
+  <div class="video-preview">
+    <iframe src="https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview" frameborder="0" width="160" height="90" allowfullscreen="" style="pointer-events: none;"></iframe>
+    <span class="video-title" id="btn2">Episode 2</span>
+  </div>
+  <div class="video-preview">
+    <iframe src="https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview" frameborder="0" width="160" height="90" allowfullscreen="" style="pointer-events: none;"></iframe>
+    <span class="video-title" id="btn3">Episode 3</span>
+  </div>
+  <div class="video-preview">
+    <iframe src="https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview" frameborder="0" width="160" height="90" allowfullscreen="" style="pointer-events: none;"></iframe>
+    <span class="video-title" id="btn4">Episode 4</span>
+  </div>
+  <div class="video-preview">
+    <iframe src="https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview" frameborder="0" width="160" height="90" allowfullscreen="" style="pointer-events: none;"></iframe>
+    <span class="video-title" id="btn5">Episode 5</span>
+  </div>
+  <div class="video-preview">
+    <iframe src="https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview" frameborder="0" width="160" height="90" allowfullscreen="" style="pointer-events: none;"></iframe>
+    <span class="video-title" id="btn6">Episode 6</span>
+  </div>
+</div>
+
+<!--CSS For Buttons-->
+<style>
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.video-preview {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.video-title {
+  font-size: 16px;
+  margin-left: 15px;
+}
+</style>
+
+<!--Javascript for Buttons and iframe-->
+
+<script>
+  const iframe = document.getElementById("my-iframe");
+
+  function showVideo() {
+    const videoContainer = document.getElementById("video-container");
+    videoContainer.style.display = "block";
+  }
+  
+  document.getElementById("btn1").addEventListener("click", function() {
+    iframe.src = "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview";
+  });
+
+  document.getElementById("btn2").addEventListener("click", function() {
+    iframe.src = "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview";
+  });
+
+  document.getElementById("btn3").addEventListener("click", function() {
+    iframe.src = "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview";
+  });
+
+  document.getElementById("btn4").addEventListener("click", function() {
+    iframe.src = "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview";
+  });
+
+  document.getElementById("btn5").addEventListener("click", function() {
+    iframe.src = "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview";
+  });
+
+  document.getElementById("btn6").addEventListener("click", function() {
+    iframe.src = "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview";
+  });
+</script>
+
+
+<!--Support us Section-->
+
+<p style="text-align: center;"><small><span style="font-family: Permanent Marker;">Are You Really Enjoying this Consider to Support us by </span></small></p><p style="text-align: center;"><a href="https://weeb-voice.blogspot.com/p/join-us.html" target="_blank"><span style="font-family: Permanent Marker;">Join us</span></a></p><p></p>

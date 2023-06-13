@@ -100,6 +100,38 @@
 </div>
 
 <!--Javascript for Pagination and iframe-->
+window.addEventListener('message', function(event) {
+  // Check the origin of the message
+  if (event.origin !== 'https://blog-weebtest.blogspot.com') {
+    return;
+  }
+
+  // Extract data from the message
+  var data = event.data;
+
+  // Check the type of message
+  if (data.type === 'responseData') {
+    // Access the series title and links
+    var seriesTitle = data.seriesTitle;
+    var links = data.links;
+
+    // Use the data to update the iframe content
+    document.getElementById('seriesTitle').textContent = seriesTitle;
+
+    var linksList = document.getElementById('linksList');
+    links.forEach(function(link) {
+      var listItem = document.createElement('li');
+      var anchor = document.createElement('a');
+      anchor.href = link;
+      anchor.textContent = link;
+      listItem.appendChild(anchor);
+      linksList.appendChild(listItem);
+    });
+  }
+});
+
+// Send a message to the parent page to request the series title and links
+window.parent.postMessage({ type: 'requestData' }, 'https://weebvoice.github.io/');
 <script>
   const bigIframe = document.getElementById("my-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");

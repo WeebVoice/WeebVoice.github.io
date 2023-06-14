@@ -99,11 +99,11 @@
   <button id="prev-button" style="margin-right: 10px;">Prev</button>
 </div>
 
-<script>
 <!--Javascript for Pagination and iframe-->
+<script>
 window.addEventListener('message', function(event) {
   // Check the origin of the message
-  if (event.origin !== 'https://blog-weebtest.blogspot.com') {
+  if (event.origin !== 'https://blog-weebtest.blogspotcom') {
     return;
   }
 
@@ -132,7 +132,7 @@ window.addEventListener('message', function(event) {
 });
 
 // Send a message to the parent page to request the series title and links
-window.parent.postMessage({ type: 'requestData' }, 'https://weebvoice.github.io/');
+window.parent.postMessage({ type: 'requestData' }, 'https://WeebVoice.github.io');
 
   const bigIframe = document.getElementById("my-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
@@ -173,7 +173,9 @@ window.parent.postMessage({ type: 'requestData' }, 'https://weebvoice.github.io/
 
       // Generate the episode number with leading zeros
       const episodeNumber = (i + 1).toString().padStart(2, "0");
-      
+
+      // Combine the series title and episode number
+      videoTitle.textContent = "[WeebVoice] " + seriesTitle + "-" + episodeNumber;
 
       // Append elements to the video preview container
       videoPreview.appendChild(iframe);

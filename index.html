@@ -99,44 +99,9 @@
   <button id="prev-button" style="margin-right: 10px;">Prev</button>
 </div>
 
-<!--Javascript for handling messages and sending data back and forth between the parent page and iframe-->
-<script>
-  // Function to handle messages received from the parent page
-  function handleMessage(event) {
-    // Check the origin of the message
-    if (event.origin !== 'https://blog-weebtest.blogspot.com/') {
-      return;
-    }
-
-    // Extract data from the message
-    var data = event.data;
-
-    // Check the type of message
-    if (data.type === 'requestData') {
-      // Send a message to the parent page requesting the series title and links
-      event.source.postMessage({ type: 'requestData' }, event.origin);
-    } else if (data.type === 'responseData') {
-      // Extract the series title and links from the message
-      var seriesTitle = data.seriesTitle;
-      var links = data.links;
-
-      // Use the series title and links in your iframe
-      // ...
-
-      // Example: Output the series title and links to the console
-      console.log('Series Title:', seriesTitle);
-      console.log('Links:', links);
-    }
-  }
-
-  // Listen for messages from the parent page
-  window.addEventListener('message', handleMessage);
-
-  // Send a message to the parent page to request the series title and links
-  window.parent.postMessage({ type: 'requestData' }, 'https://blog-weebtest.blogspot.com');
-
-
 <!--Javascript for Pagination and iframe-->
+<script>
+  const links = window.links;
 
   const bigIframe = document.getElementById("my-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
@@ -168,8 +133,7 @@
       iframe.style.pointerEvents = "none";
       iframe.style.border = "none";
 
-      // Define the fixed variable for the series title
-      const seriesTitle = "Attack on Titan S1";
+      const seriesTitle = window.seriesTitle;
 
       // Create video title
       const videoTitle = document.createElement("span");

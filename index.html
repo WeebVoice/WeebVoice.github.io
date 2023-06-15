@@ -99,41 +99,25 @@
   <button id="prev-button" style="margin-right: 10px;">Prev</button>
 </div>
 
+<script>
+  // Get the URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+
+// Extract the "links" and "seriesTitles" parameters
+const linksParam = urlParams.get('links');
+const seriesTitlesParam = urlParams.get('seriesTitles');
+
+// Convert the parameter strings to arrays
+const links = linksParam ? JSON.parse(linksParam) : [];
+const seriesTitles = seriesTitlesParam ? JSON.parse(seriesTitlesParam) : [];
+
+// Use the "links" and "seriesTitles" arrays as needed
+console.log(links);
+console.log(seriesTitles);
+</script>
+
 <!--Javascript for Pagination and iframe-->
 <script>
-window.addEventListener('message', function(event) {
-  // Check the origin of the message
-  if (event.origin !== 'https://blog-weebtest.blogspotcom') {
-    return;
-  }
-
-  // Extract data from the message
-  var data = event.data;
-
-  // Check the type of message
-  if (data.type === 'responseData') {
-    // Access the series title and links
-    var seriesTitle = data.seriesTitle;
-    var links = data.links;
-
-    // Use the data to update the iframe content
-    document.getElementById('seriesTitle').textContent = seriesTitle;
-
-    var linksList = document.getElementById('linksList');
-    links.forEach(function(link) {
-      var listItem = document.createElement('li');
-      var anchor = document.createElement('a');
-      anchor.href = link;
-      anchor.textContent = link;
-      listItem.appendChild(anchor);
-      linksList.appendChild(listItem);
-    });
-  }
-});
-
-// Send a message to the parent page to request the series title and links
-window.parent.postMessage({ type: 'requestData' }, 'https://WeebVoice.github.io');
-
   const bigIframe = document.getElementById("my-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
   const prevButton = document.getElementById("prev-button");

@@ -80,7 +80,7 @@
 <div style="text-align: center;">
   <small>Visit Main Site <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank" class="small-link">WeebVoice</a></small>
   <div id="video-container" style="height: 0px; overflow: hidden; padding-bottom: 56.25%; position: relative;">
-    <iframe allowfullscreen="" id="my-iframe" src="" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
+    <iframe allowfullscreen="" id="big-iframe" src="" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
   </div>
 </div>
 
@@ -101,16 +101,60 @@
 
 <!--Javascript for Pagination and iframe-->
 <script>
-  const links = window.links;
+  const links = [
+    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
+    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
+    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
+    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
+    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
+    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
+    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
+    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
+    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
+    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
+    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
+    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
+    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
+    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
+    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
+    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
+    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
+    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
+    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
+    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
+    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
+    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
+    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
+    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
+    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
+    // Add more links as needed
+  ];
 
-  const bigIframe = document.getElementById("my-iframe");
+  const bigIframe = document.getElementById("big-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
   const prevButton = document.getElementById("prev-button");
   let currentPage = 1;
   const videosPerPage = 4;
   const maxDisplayedPages = 3; // Maximum number of page buttons to display
 
-  function generateVideoPreviews() {
+// Listen for messages from the parent page
+window.addEventListener("message", function(event) {
+    if (event.data && event.data.links && event.data.seriesTitle) {
+      const links = event.data.links;
+      const seriesTitle = event.data.seriesTitle;
+
+      // Use the received data to generate video previews
+      generateVideoPreviews(links, seriesTitle);
+    }
+  });
+
+  // Function to generate video previews using the received data
+  function generateVideoPreviews(links, seriesTitle) {
     videoPreviewsContainer.innerHTML = '';
 
     for (let i = 0; i < links.length; i++) {
@@ -132,8 +176,6 @@
       iframe.allowfullscreen = true;
       iframe.style.pointerEvents = "none";
       iframe.style.border = "none";
-
-      const seriesTitle = window.seriesTitle;
 
       // Create video title
       const videoTitle = document.createElement("span");

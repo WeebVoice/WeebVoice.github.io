@@ -101,28 +101,28 @@
 
 <!--Javascript for Pagination and iframe-->
 <script>
-const bigIframe = parent.document.getElementById("my-iframe"); // Access the iframe in the parent page
-const videoPreviewsContainer = document.getElementById("video-previews");
-const prevButton = document.getElementById("prev-button");
-let currentPage = 1;
-const videosPerPage = 4;
-const maxDisplayedPages = 3; // Maximum number of page buttons to display
-
-let links = []; // Array to store the video links
-let seriesTitle = ""; // Variable to store the series title
-let initialLink = ""; // Variable to store the initial link
-
-// Listen for messages from the parent page
-window.addEventListener("message", function (event) {
-  if (event.data && event.data.links && event.data.seriesTitle && event.data.initialLink) {
-    links = event.data.links;
-    seriesTitle = event.data.seriesTitle;
-    initialLink = event.data.initialLink;
-
-    // Use the received data to generate video previews
-    generateVideoPreviews();
-  }
-});
+  const bigIframe = document.getElementById("big-iframe");
+  const videoPreviewsContainer = document.getElementById("video-previews");
+  const prevButton = document.getElementById("prev-button");
+  let currentPage = 1;
+  const videosPerPage = 4;
+  const maxDisplayedPages = 3; // Maximum number of page buttons to display
+  
+  let links = []; // Array to store the video links
+  let seriesTitle = ""; // Variable to store the series title
+  let initialLink = ""; // Variable to store the initial link
+  
+  // Listen for messages from the parent page
+  window.addEventListener("message", function (event) {
+    if (event.data && event.data.links && event.data.seriesTitle) {
+      links = event.data.links;
+      seriesTitle = event.data.seriesTitle;
+      initialLink = event.data.initialLink;
+  
+      // Use the received data to generate video previews
+      generateVideoPreviews();
+    }
+  });
   
   // Function to generate video previews using the received data
   function generateVideoPreviews() {

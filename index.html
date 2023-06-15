@@ -101,40 +101,6 @@
 
 <!--Javascript for Pagination and iframe-->
 <script>
-  const links = [
-    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-    "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-    "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-    "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-    "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-    "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-    "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-    // Add more links as needed
-  ];
-
   const bigIframe = document.getElementById("big-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
   const prevButton = document.getElementById("prev-button");
@@ -142,8 +108,8 @@
   const videosPerPage = 4;
   const maxDisplayedPages = 3; // Maximum number of page buttons to display
 
-// Listen for messages from the parent page
-window.addEventListener("message", function(event) {
+  // Listen for messages from the parent page
+  window.addEventListener("message", function(event) {
     if (event.data && event.data.links && event.data.seriesTitle) {
       const links = event.data.links;
       const seriesTitle = event.data.seriesTitle;

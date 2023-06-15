@@ -134,12 +134,10 @@
 
   // Send a message to the parent page to request the series title and links
   window.parent.postMessage({ type: 'requestData' }, 'https://blog-weebtest.blogspot.com');
-</script>
-
 
 
 <!--Javascript for Pagination and iframe-->
-<script>
+
   const bigIframe = document.getElementById("my-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
   const prevButton = document.getElementById("prev-button");

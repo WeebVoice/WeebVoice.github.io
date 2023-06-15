@@ -162,9 +162,6 @@
       videoPreviewsContainer.appendChild(videoPreview);
     }
 
-    showVideos();
-  }
-
   function showVideos() {
     const startIndex = (currentPage - 1) * videosPerPage;
     const endIndex = startIndex + videosPerPage;
@@ -312,6 +309,9 @@
       showVideos();
     }
   });
+
+  showVideos();
+  }
 
   function changeIframeSource(link) {
     bigIframe.src = link;

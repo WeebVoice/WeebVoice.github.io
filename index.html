@@ -113,14 +113,15 @@
     if (event.data && event.data.links && event.data.seriesTitle) {
       const links = event.data.links;
       const seriesTitle = event.data.seriesTitle;
+      const initialLink = event.data.initialLink;
 
       // Use the received data to generate video previews
-      generateVideoPreviews(links, seriesTitle);
+      generateVideoPreviews(links, seriesTitle, initialLink);
     }
   });
 
   // Function to generate video previews using the received data
-  function generateVideoPreviews(links, seriesTitle) {
+  function generateVideoPreviews(links, seriesTitle, initialLink) {
     videoPreviewsContainer.innerHTML = '';
 
     for (let i = 0; i < links.length; i++) {
@@ -157,10 +158,17 @@
       videoPreview.appendChild(iframe);
       videoPreview.appendChild(videoTitle);
 
-
       // Append the video preview to the container
       videoPreviewsContainer.appendChild(videoPreview);
     }
+
+    showVideos();
+
+    // Load the initial link in the big-iframe
+    if (initialLink) {
+      bigIframe.src = initialLink;
+    }
+  }
 
   function showVideos() {
     const startIndex = (currentPage - 1) * videosPerPage;
@@ -180,66 +188,67 @@
   }
 
   function updatePagination() {
-  const totalPages = Math.ceil(links.length / videosPerPage);
-  const pagination = document.getElementById("pagination");
-  pagination.innerHTML = '';
+    const totalPages = Math.ceil(links.length / videosPerPage);
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = '';
 
-  if (totalPages > 1) {
-    const pageNumbers = document.createElement("div");
-    pageNumbers.classList.add("page-numbers");
-    pageNumbers.style.margin = "20px 0";
+    if (totalPages > 1) {
+      const pageNumbers = document.createElement("div");
+      pageNumbers.classList.add("page-numbers");
+      pageNumbers.style.margin = "20px 0";
 
-    let startPage, endPage;
+      let startPage, endPage;
 
-    if (currentPage <= Math.ceil(maxDisplayedPages / 2)) {
-      startPage = 1;
-      endPage = Math.min(maxDisplayedPages, totalPages);
-    } else if (currentPage >= totalPages - Math.floor(maxDisplayedPages / 2)) {
-      startPage = totalPages - maxDisplayedPages + 1;
-      endPage = totalPages;
-    } else {
-      startPage = currentPage - Math.floor(maxDisplayedPages / 2);
-      endPage = currentPage + Math.ceil(maxDisplayedPages / 2) - 1;
-    }
-
-    if (startPage > 1) {
-      const prevPage = document.createElement("button");
-      prevPage.classList.add("page-number");
-      prevPage.textContent = "Prev";
-      prevPage.addEventListener("click", function () {
-        goToPage(currentPage - 1);
-      });
-      pageNumbers.appendChild(prevPage);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      const pageNumber = document.createElement("button");
-      pageNumber.classList.add("page-number");
-      pageNumber.textContent = i;
-      pageNumber.addEventListener("click", function () {
-        goToPage(i);
-      });
-      if (i === currentPage) {
-        pageNumber.style.backgroundColor = "#ff1a00"; // Set the current page button color
-        pageNumber.style.color = "#ffffff"; // Set the current page button text color
+      if (currentPage <= Math.ceil(maxDisplayedPages / 2)) {
+        startPage = 1;
+        endPage = Math.min(maxDisplayedPages, totalPages);
+      } else if (currentPage >= totalPages - Math.floor(maxDisplayedPages / 2)) {
+        startPage = totalPages - maxDisplayedPages + 1;
+        endPage = totalPages;
+      } else {
+        startPage = currentPage - Math.floor(maxDisplayedPages / 2);
+        endPage = currentPage + Math.ceil(maxDisplayedPages / 2) - 1;
       }
-      pageNumbers.appendChild(pageNumber);
-    }
 
-    if (endPage < totalPages) {
-      const nextPage = document.createElement("button");
-      nextPage.classList.add("page-number");
-      nextPage.textContent = "Next";
-      nextPage.addEventListener("click", function () {
-        goToPage(currentPage + 1);
-      });
-      pageNumbers.appendChild(nextPage);
-    }
+      if (startPage > 1) {
+        const prevPage = document.createElement("button");
+        prevPage.classList.add("page-number");
+        prevPage.textContent = "Prev";
+        prevPage.addEventListener("click", function () {
+          goToPage(currentPage - 1);
+        });
+        pageNumbers.appendChild(prevPage);
+      }
 
-    pagination.appendChild(pageNumbers);
-    prevButton.disabled = currentPage === 1;
+      for (let i = startPage; i <= endPage; i++) {
+        const pageNumber = document.createElement("button");
+        pageNumber.classList.add("page-number");
+        pageNumber.textContent = i;
+        pageNumber.addEventListener("click", function () {
+          goToPage(i);
+        });
+        if (i === currentPage) {
+          pageNumber.style.backgroundColor = "#ff1a00"; // Set the current page button color
+          pageNumber.style.color = "#ffffff"; // Set the current page button text color
+        }
+        pageNumbers.appendChild(pageNumber);
+      }
+
+      if (endPage < totalPages) {
+        const nextPage = document.createElement("button");
+        nextPage.classList.add("page-number");
+        nextPage.textContent = "Next";
+        nextPage.addEventListener("click", function () {
+          goToPage(currentPage + 1);
+        });
+        pageNumbers.appendChild(nextPage);
+      }
+
+      pagination.appendChild(pageNumbers);
+      prevButton.disabled = currentPage === 1;
+    }
   }
-}
+
   const totalPages = Math.ceil(links.length / videosPerPage);
   const pagination = document.getElementById("pagination");
   pagination.innerHTML = '';
@@ -310,17 +319,11 @@
     }
   });
 
-  showVideos();
-  }
-
   function changeIframeSource(link) {
     bigIframe.src = link;
   }
-
-  // Initial display
-  bigIframe.src = links[0];
-  generateVideoPreviews();
 </script>
+
 
 <!--Support us Section-->
 

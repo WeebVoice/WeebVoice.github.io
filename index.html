@@ -99,22 +99,44 @@
   <button id="prev-button" style="margin-right: 10px;">Prev</button>
 </div>
 
+<!--Javascript for handling messages and sending data back and forth between the parent page and iframe-->
 <script>
-  // Get the URL parameters
-const urlParams = new URLSearchParams(window.location.search);
+  // Function to handle messages received from the parent page
+  function handleMessage(event) {
+    // Check the origin of the message
+    if (event.origin !== 'https://blog-weebtest.blogspot.com/') {
+      return;
+    }
 
-// Extract the "links" and "seriesTitles" parameters
-const linksParam = urlParams.get('links');
-const seriesTitlesParam = urlParams.get('seriesTitles');
+    // Extract data from the message
+    var data = event.data;
 
-// Convert the parameter strings to arrays
-const links = linksParam ? JSON.parse(linksParam) : [];
-const seriesTitles = seriesTitlesParam ? JSON.parse(seriesTitlesParam) : [];
+    // Check the type of message
+    if (data.type === 'requestData') {
+      // Send a message to the parent page requesting the series title and links
+      event.source.postMessage({ type: 'requestData' }, event.origin);
+    } else if (data.type === 'responseData') {
+      // Extract the series title and links from the message
+      var seriesTitle = data.seriesTitle;
+      var links = data.links;
 
-// Use the "links" and "seriesTitles" arrays as needed
-console.log(links);
-console.log(seriesTitles);
+      // Use the series title and links in your iframe
+      // ...
+
+      // Example: Output the series title and links to the console
+      console.log('Series Title:', seriesTitle);
+      console.log('Links:', links);
+    }
+  }
+
+  // Listen for messages from the parent page
+  window.addEventListener('message', handleMessage);
+
+  // Send a message to the parent page to request the series title and links
+  window.parent.postMessage({ type: 'requestData' }, 'https://blog-weebtest.blogspot.com');
 </script>
+
+
 
 <!--Javascript for Pagination and iframe-->
 <script>

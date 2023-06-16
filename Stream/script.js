@@ -1,5 +1,3 @@
-<!--Javascript for Pagination and iframe-->
-
   const bigIframe = document.getElementById("big-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
   const prevButton = document.getElementById("prev-button");

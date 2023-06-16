@@ -262,7 +262,7 @@
   
   function changeIframeSource(link) {
     bigIframe.src = link;
-    bigIframe.play();
+    bigIframe.dispatchEvent(new Event('click')); // Simulate a click event
   }
   
 </script>

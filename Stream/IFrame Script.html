@@ -138,6 +138,7 @@
       iframe.width = "160";
       iframe.height = "90";
       iframe.allowfullscreen = true;
+      iframe.allow = "autoplay";
       iframe.style.pointerEvents = "none";
       iframe.style.border = "none";
   
@@ -261,6 +262,7 @@
   
   function changeIframeSource(link) {
     bigIframe.src = link;
+    bigIframe.play();
   }
   
 </script>

@@ -8,4 +8,4 @@
 
    -   The stream.html contains only html [from IFrame Script.html]
 
-   -   The Mini stream.html contains full Minifier code [Used for site and Futher modification in this file make changes to whole site]
+   -   The stream.html [Previouse directory] contains full Minifier code [Used for site and Futher modification in this file make changes to whole site]

@@ -1,6 +1,5 @@
 <!--Javascript for Buttons and iframe-->
-
-<script>
+  
   const iframe = document.getElementById("my-iframe");
 
   function showVideo() {
@@ -31,4 +30,3 @@
   document.getElementById("btn6").addEventListener("click", function() {
     iframe.src = "https://www.youtube.com/embed/VIDEO_ID_6";
   });
-</script>

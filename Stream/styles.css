@@ -1,6 +1,5 @@
 <!--CSS For Buttons-->
 
-<style>
   .button-container {
   display: flex;
   justify-content: center;
@@ -23,4 +22,3 @@
 .button-container button:hover {
   background-color: #6d6b6b;
 }
-</style>

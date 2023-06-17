@@ -1,11 +1,7 @@
    -   The Post Script.html contains full code used in Weeb Stream Post
 
-   -   The IFrame Script.html contains full code
+   -   The IFrame Script.html contains full code [Without Minifier Used for site and Futher modification in this file make changes and minifier and used for whole site]
 
-   -   The script.js contains only script [from IFrame Script.html]
+   -   The frame.js contains only script [for stream.html Minifier Code]
 
-   -   The styles.css contains only css [from IFrame Script.html]
-
-   -   The stream.html contains only html [from IFrame Script.html]
-
-   -   The stream.html [Previouse directory] contains full Minifier code [Used for site and Futher modification in this file make changes to whole site]
+   -   The stream.html contains css and html [Minifier Code]

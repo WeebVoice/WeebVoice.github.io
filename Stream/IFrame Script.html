@@ -266,6 +266,20 @@
   
 </script>
 
+<!-- Your iframe content here -->
+
+<script>
+  function sendIframeHeight() {
+    var height = document.body.scrollHeight;
+    parent.postMessage({ type: 'setIframeHeight', height: height }, '*');
+  }
+
+  // Call the sendIframeHeight function whenever the content inside the iframe changes its height
+  // For example, if you have dynamic content or AJAX requests that may affect the height, call this function after the changes are made
+  sendIframeHeight();
+</script>
+
+
 
 <!--Support us Section-->
 

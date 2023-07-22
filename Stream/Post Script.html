@@ -41,3 +41,13 @@
         // Call the function when the iframe is loaded
         document.getElementById("my-iframe").addEventListener("load", sendDataToIframe);
     </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js"></script>
+<script>
+  iFrameResize({
+    heightCalculationMethod: 'max',
+    log: false,
+    checkOrigin: false,
+  });
+</script>
+

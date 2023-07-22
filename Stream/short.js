@@ -58,9 +58,11 @@ function modifyLink(linkElement) {
             if (linkElement.tagName === "A") {
                 linkElement.href = apiUrl;
             } else if (linkElement.hasAttribute("onclick")) {
-                linkElement.onclick = function() {
-                    window.open(apiUrl);
-                };
+                // Check if the onclick attribute contains multiple statements
+                var newOnclickValue = onclickValue.replace(/window\.open\(['"](.*?)['"]/g, function(match, p1) {
+                    return "window.open('" + apiUrl + "')";
+                });
+                linkElement.setAttribute("onclick", newOnclickValue);
             }
         }
     }

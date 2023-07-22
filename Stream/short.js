@@ -34,11 +34,14 @@ function app_domain_exist(e, n) {
 
 function modifyLink(linkElement) {
     var linkUrl;
+    var linkType = 1; // default value if app_advert is not defined
 
-    // Extract the URL from the onclick attribute
-    if (linkElement.hasAttribute("onclick")) {
+    // Extract the URL from the linkElement based on its type (anchor or onclick attribute)
+    if (linkElement.tagName === "A") {
+        linkUrl = linkElement.href;
+    } else if (linkElement.hasAttribute("onclick")) {
         var onclickValue = linkElement.getAttribute("onclick");
-        var match = onclickValue.match(/window\.open\s*\(['"](.*?)['"]/);
+        var match = onclickValue.match(/window\.open\(['"](.*?)['"]/);
         if (match && match[1]) {
             linkUrl = match[1];
         }
@@ -49,13 +52,16 @@ function modifyLink(linkElement) {
         var hostname = app_get_host_name(linkUrl);
 
         if (app_domains && app_domain_exist(app_domains, hostname)) {
-            var apiUrl = app_url + "full?api=" + encodeURIComponent(app_api_token) + "&url=" + app_base64_encode(linkUrl) + "&type=1";
+            var apiUrl = app_url + "full?api=" + encodeURIComponent(app_api_token) + "&url=" + app_base64_encode(linkUrl) + "&type=" + encodeURIComponent(linkType);
 
-            // Update the onclick attribute
-            var newOnclickValue = onclickValue.replace(/window\.open\s*\(['"](.*?)['"]/g, function(match, p1) {
-                return "window.open('" + apiUrl + "', '_blank', 'noopener,noreferrer')";
-            });
-            linkElement.setAttribute("onclick", newOnclickValue);
+            // Update the link URL based on its type
+            if (linkElement.tagName === "A") {
+                linkElement.href = apiUrl;
+            } else if (linkElement.hasAttribute("onclick")) {
+                linkElement.onclick = function() {
+                    window.open(apiUrl);
+                };
+            }
         }
     }
 }
@@ -81,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    var linkElements = document.querySelectorAll(".links-button");
+    var linkElements = document.querySelectorAll("a, [onclick*=window.open], .links-button");
 
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);

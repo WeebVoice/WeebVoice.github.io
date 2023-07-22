@@ -106,7 +106,9 @@
     
     // Listen for messages from the parent page
     window.addEventListener("message", function (event) {
-      if (event.data && event.data.links && event.data.seriesTitle) {
+      // Ensure the message is coming from the correct origin
+      if (event.origin === "https://blog-weebtest.blogspot.com") {
+        if (event.data && event.data.links && event.data.seriesTitle) {
         links = event.data.links;
         seriesTitle = event.data.seriesTitle;
         initialLink = event.data.initialLink;
@@ -116,13 +118,14 @@
 
         // Call the auto-resize function whenever the content changes to adjust the iframe's height
         autoResize();
+        }
       }
     });
     
     // Function to resize the iframe to fit its content's height
     function autoResize() {
       const iframeHeight = document.body.scrollHeight;
-      window.parent.postMessage({ iframeHeight }, "*");
+      window.parent.postMessage({ iframeHeight }, "https://blog-weebtest.blogspot.com");
     }
 
     // Function to generate video previews using the received data

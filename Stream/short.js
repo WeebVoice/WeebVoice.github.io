@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    var linkElements = document.querySelectorAll("a, [onclick*=window.open], .links-button");
+    var linkElements = document.querySelectorAll("a, .links-button");
 
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);

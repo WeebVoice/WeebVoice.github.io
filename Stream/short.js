@@ -58,8 +58,9 @@ function modifyLink(linkElement) {
             if (linkElement.tagName === "A") {
                 linkElement.href = apiUrl;
             } else if (linkElement.hasAttribute("onclick")) {
-                var newOnclickValue = onclickValue.replace(linkUrl, apiUrl);
-                linkElement.setAttribute("onclick", newOnclickValue);
+                linkElement.onclick = function() {
+                    window.open(apiUrl);
+                };
             }
         }
     }
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    var linkElements = document.querySelectorAll("a[onclick]");
+    var linkElements = document.querySelectorAll("a, [onclick*=window.open]");
 
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);

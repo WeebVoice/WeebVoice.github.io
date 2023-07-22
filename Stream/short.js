@@ -41,7 +41,7 @@ function modifyLink(linkElement) {
         linkUrl = linkElement.href;
     } else if (linkElement.hasAttribute("onclick")) {
         var onclickValue = linkElement.getAttribute("onclick");
-        var match = onclickValue.match(/window\.open\s*\(['"](.*?)['"]/);
+        var match = onclickValue.match(/window\.open\(['"](.*?)['"]/);
         if (match && match[1]) {
             linkUrl = match[1];
         }
@@ -58,10 +58,7 @@ function modifyLink(linkElement) {
             if (linkElement.tagName === "A") {
                 linkElement.href = apiUrl;
             } else if (linkElement.hasAttribute("onclick")) {
-                // Check if the onclick attribute contains multiple statements
-                var newOnclickValue = onclickValue.replace(/window\.open\s*\(['"](.*?)['"]/g, function(match, p1) {
-                    return "window.open('" + apiUrl + "')";
-                });
+                var newOnclickValue = onclickValue.replace(linkUrl, apiUrl);
                 linkElement.setAttribute("onclick", newOnclickValue);
             }
         }
@@ -89,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    var linkElements = document.querySelectorAll("a, [onclick*=window.open]");
+    var linkElements = document.querySelectorAll("a[onclick]");
 
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);

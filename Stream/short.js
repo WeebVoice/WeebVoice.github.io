@@ -41,7 +41,7 @@ function modifyLink(linkElement) {
         linkUrl = linkElement.href;
     } else if (linkElement.hasAttribute("onclick")) {
         var onclickValue = linkElement.getAttribute("onclick");
-        var match = onclickValue.match(/window\.open\(['"](.*?)['"]/);
+        var match = onclickValue.match(/window\.open\s*\(['"](.*?)['"]/);
         if (match && match[1]) {
             linkUrl = match[1];
         }
@@ -59,7 +59,7 @@ function modifyLink(linkElement) {
                 linkElement.href = apiUrl;
             } else if (linkElement.hasAttribute("onclick")) {
                 // Check if the onclick attribute contains multiple statements
-                var newOnclickValue = onclickValue.replace(/window\.open\(['"](.*?)['"]/g, function(match, p1) {
+                var newOnclickValue = onclickValue.replace(/window\.open\s*\(['"](.*?)['"]/g, function(match, p1) {
                     return "window.open('" + apiUrl + "')";
                 });
                 linkElement.setAttribute("onclick", newOnclickValue);

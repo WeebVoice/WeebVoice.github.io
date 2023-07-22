@@ -47,30 +47,20 @@
       
       const seriesTitle = "Attack on Titan S1";
       
-      // Function to send the data to the iframe
-      function sendDataToIframe() {
-        const iframe = document.getElementById("my-iframe");
-        iframe.addEventListener("load", function () {
-        iframe.contentWindow.postMessage(
-          {
-            links: links,
-            seriesTitle: seriesTitle,
-            initialLink: initialLink,
-          },
-          "*"
-        );
-        // After content is loaded, resize the iframe
-        autoResizeIframe();
-        });
-      }
-      
-      // Function to resize the iframe based on its content's height
-      function autoResizeIframe() {
-      const iframe = document.getElementById("my-iframe");
-      const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-      const iframeContentHeight = iframeDocument.body.scrollHeight;
-      iframe.style.height = iframeContentHeight + "px";
-      }
+        // Function to send the data to the iframe
+        function sendDataToIframe() {
+          const iframe = document.getElementById("my-iframe");
+          iframe.contentWindow.postMessage(
+            {
+              links: links,
+              seriesTitle: seriesTitle,
+              initialLink: initialLink,
+            },
+            "*"
+          );
+        }
+
+        
       // Call the function when the iframe is loaded
       document.getElementById("my-iframe").addEventListener("load", sendDataToIframe);
     </script>

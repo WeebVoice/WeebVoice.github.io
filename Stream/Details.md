@@ -5,3 +5,5 @@
    -   The frame.js contains only script [for stream.html Minifier Code]
 
    -   The stream.html contains css and html [Minifier Code]
+
+   -   The Short.js contains Full modify TNShort Script [Modify for <a> and <button> onclick function]

@@ -1,7 +1,0 @@
-<script type="text/javascript">
-    var app_url = 'https://tnshort.net/';
-    var app_api_token = '8d5c5a42fd6a50aa1798a4858793bb3b993f0d10';
-    var app_advert = 2;
-    var app_domains = ["mega.nz","drive.google.com","weeb-stream.blogspot.com"];
-</script>
-<script src='https://weebvoice.github.io/Minifier%20Code/script.js'></script>

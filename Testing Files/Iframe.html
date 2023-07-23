@@ -60,21 +60,22 @@
     });
 
     // Listen for the message event from the parent page
-    window.parent.addEventListener("message", function (event) {
+    window.addEventListener("message", function (event) {
       // Check the origin of the message (for security)
       if (event.origin !== "*") {
         return; // Abort if the message is not from a trusted origin
       }
 
-      // Check if the message contains the IframeLink data
-      if (event.data && event.data.IframeLink) {
-        const receivedIframeLink = event.data.IframeLink;
-        // Now you can use the receivedIframeLink in your iframe as needed
-        console.log("Received IframeLink:", receivedIframeLink);
+      // Check if the message contains the IframeURL data
+      if (event.data && event.data.IframeURL) {
+        // Change this key to "IframeURL"
+        const receivedIframeURL = event.data.IframeURL; // Change this key to "IframeURL"
+        // Now you can use the receivedIframeURL in your iframe as needed
+        console.log("Received IframeURL:", receivedIframeURL);
 
         // Set the received link as the source of the iframe (YouTube video URL)
         const iframe = document.getElementById("m-iframe");
-        iframe.setAttribute("src", receivedIframeLink);
+        iframe.setAttribute("src", receivedIframeURL); // Change this key to "IframeURL"
       }
     });
   </script>

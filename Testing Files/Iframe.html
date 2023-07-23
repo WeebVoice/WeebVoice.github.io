@@ -1,7 +1,7 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap');
-  
+  @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap");
+
   small {
     font-size: 16.5px;
     font-weight: bold;
@@ -9,11 +9,11 @@
 
   .small-link {
     color: #ff1a00;
-    font-family: 'Permanent Marker';
+    font-family: "Permanent Marker";
   }
 
   body {
-    font-family: 'Coming Soon';
+    font-family: "Coming Soon";
     color: white;
   }
 </style>
@@ -22,8 +22,12 @@
 <div style="text-align: center">
   <small
     >Visit Main Site
-    <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank"
-      ><b>WeebVoice</b></a
+    <a
+      href="https://weeb-voice.blogspot.com/"
+      rel="noopener"
+      target="_blank"
+      class="small-link"
+      >WeebVoice</a
     ></small
   >
   <div
@@ -53,31 +57,31 @@
         "border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"
       );
       const videoContainer = document.getElementById("video-container");
-      videoContainer.appendChild(m-iframe);
+      videoContainer.appendChild(m - iframe);
       videoContainer.style.display = "block";
     });
 
     // Listen for the message event from the parent page
-    window.addEventListener("message", function(event) {
-        // Check the origin of the message (for security)
-        if (event.origin !== "https://your-parent-page-origin.com") {
-            return; // Abort if the message is not from a trusted origin
-        }
+    window.addEventListener("message", function (event) {
+      // Check the origin of the message (for security)
+      if (event.origin !== "https://your-parent-page-origin.com") {
+        return; // Abort if the message is not from a trusted origin
+      }
 
-        // Check if the message contains the IframeLink data
-        if (event.data && event.data.IframeLink) {
-            const receivedIframeLink = event.data.IframeLink;
-            // Now you can use the receivedIframeLink in your iframe as needed
-            console.log("Received IframeLink:", receivedIframeLink);
+      // Check if the message contains the IframeLink data
+      if (event.data && event.data.IframeLink) {
+        const receivedIframeLink = event.data.IframeLink;
+        // Now you can use the receivedIframeLink in your iframe as needed
+        console.log("Received IframeLink:", receivedIframeLink);
 
-            // Set the received link as the source of the iframe (YouTube video URL)
-            const iframe = document.getElementById("my-iframe");
-            iframe.setAttribute("src", receivedIframeLink);
-        }
+        // Set the received link as the source of the iframe (YouTube video URL)
+        const iframe = document.getElementById("my-iframe");
+        iframe.setAttribute("src", receivedIframeLink);
+      }
     });
   </script>
 
-  <div style="text-align: center; margin-top: 10px">
+  <div>
     <small>
       Watch and download more Anime from
       <a
@@ -92,17 +96,16 @@
 
   <!--Support us Section-->
 
-  <p style="text-align: center">
-    <small
-      ><span style="font-family: Permanent Marker"
-        >Are You Really Enjoying this Consider to Support us by
-      </span></small
-    >
-  </p>
-  <p style="text-align: center">
-    <a href="https://weeb-voice.blogspot.com/p/join-us.html" target="_blank"
-      ><span style="font-family: Permanent Marker">Join us</span></a
-    >
-  </p>
-  <p></p>
+  <div>
+    <small>
+      Are You Really Enjoying this? Consider supporting us by
+      <p></p>
+      <a
+        href="https://weeb-voice.blogspot.com/p/join-us.html"
+        target="_blank"
+        class="small-link"
+        >Joining US</a
+      >
+    </small>
+  </div>
 </div>

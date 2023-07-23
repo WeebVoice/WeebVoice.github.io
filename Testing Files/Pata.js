@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);
     }
-});
 
 function app_get_url(e) {
     var n = document.createElement("a");
@@ -108,4 +107,5 @@ document.addEventListener("DOMContentLoaded", function() {
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);
     }
+});
 });

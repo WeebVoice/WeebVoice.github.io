@@ -104,24 +104,21 @@
   let seriesTitle = ""; // Variable to store the series title
   let initialLink = ""; // Variable to store the initial link
   
-    // Function to handle the message received from the iframe
-  function receiveMessage(event) {
-    if (event.data && event.data.iframeLoaded) {
-      // When the iframe sends the "iframeLoaded" message, trigger the iFrame Resizer to resize the iframe
-      iFrameResize({ log: false }, event.source.frameElement);
-    }
+  // Function to send a message back to the parent page after the iframe content is loaded
+  function sendReadyMessage() {
+    window.parent.postMessage({ iframeLoaded: true }, "*");
   }
 
-  // Listen for messages from the iframe
-  window.addEventListener("message", receiveMessage, false);
-  
   // Listen for messages from the parent page
   window.addEventListener("message", function (event) {
     if (event.data && event.data.links && event.data.seriesTitle) {
       links = event.data.links;
       seriesTitle = event.data.seriesTitle;
       initialLink = event.data.initialLink;
-  
+
+      // Send a message to the parent page to indicate that the iframe is ready
+      sendReadyMessage();
+
       // Use the received data to generate video previews
       generateVideoPreviews();
     }

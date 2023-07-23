@@ -1,17 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if the identifier (id or class) exists on the specified element
-    var container = document.getElementById("disable-link-modification-container");
-    if (container) {
-        // Link modification is disabled on this page, so do nothing
-        return;
-    }
-
+// Check if the identifier (id or class) exists on the specified element
+var container = document.getElementById("disable-link-modification-container");
+if (!container) {
     // Continue with link modification for mega.nz, drive.google.com, and weeb-stream.blogspot.com links
     var linkElements = document.querySelectorAll("a, .links-button");
 
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);
     }
+}
 
 function app_get_url(e) {
     var n = document.createElement("a");
@@ -107,5 +103,4 @@ document.addEventListener("DOMContentLoaded", function() {
     for (var i = 0; i < linkElements.length; i++) {
         modifyLink(linkElements[i]);
     }
-});
 });

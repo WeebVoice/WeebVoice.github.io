@@ -68,13 +68,14 @@
 
       // Check if the message contains the IframeURL data
       if (event.data && event.data.IframeURL) {
-        const receivedIframeURL = event.data.IframeURL;
+        // Change this key to "IframeURL"
+        const receivedIframeURL = event.data.IframeURL; // Change this key to "IframeURL"
         // Now you can use the receivedIframeURL in your iframe as needed
         console.log("Received IframeURL:", receivedIframeURL);
 
         // Set the received link as the source of the iframe (YouTube video URL)
         const iframe = document.getElementById("m-iframe");
-        iframe.setAttribute("src", receivedIframeURL);
+        iframe.setAttribute("src", receivedIframeURL); // Change this key to "IframeURL"
       }
     });
   </script>

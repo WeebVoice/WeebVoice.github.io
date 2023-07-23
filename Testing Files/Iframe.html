@@ -45,26 +45,24 @@
   <script>
     const videoContainer = document.getElementById("video-container");
     videoContainer.style.display = "none";
-  </script>
 
-  <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const iframe = document.createElement("m-iframe");
+      const iframe = document.createElement("iframe");
       iframe.setAttribute("allowfullscreen", "");
-      iframe.setAttribute("src", "https://www.youtube.com/embed/VIDEO_ID_1");
+      iframe.setAttribute("id", "m-iframe");
       iframe.setAttribute(
         "style",
         "border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"
       );
       const videoContainer = document.getElementById("video-container");
-      videoContainer.appendChild(m - iframe);
+      videoContainer.appendChild(iframe);
       videoContainer.style.display = "block";
     });
 
     // Listen for the message event from the parent page
     window.addEventListener("message", function (event) {
       // Check the origin of the message (for security)
-      if (event.origin !== "*") {
+      if (event.origin !== "https://your-parent-page-origin.com") {
         return; // Abort if the message is not from a trusted origin
       }
 
@@ -75,7 +73,7 @@
         console.log("Received IframeLink:", receivedIframeLink);
 
         // Set the received link as the source of the iframe (YouTube video URL)
-        const iframe = document.getElementById("my-iframe");
+        const iframe = document.getElementById("m-iframe");
         iframe.setAttribute("src", receivedIframeLink);
       }
     });

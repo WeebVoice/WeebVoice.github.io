@@ -1,0 +1,31 @@
+<html style="background-color: #242222;">
+<title>My Stream Iframe Test</title>
+<head>
+<h1 align="center" style="color: #fff; font-family: CommigSoon-Regular cursive;">Let's Rock Baby</h1>
+</head>
+<body>
+    <div>
+      <iframe id="my-iframe" frameborder="0" style="width: 100%;" src="Iframe.html"></iframe>
+    </div>
+    
+    <script>
+      const IframeLink = "https://filemoon.sx/e/hx6b201jg4z2";
+      
+        // Function to send the data to the iframe
+        function sendDataToIframe() {
+          const iframe = document.getElementById("my-iframe");
+          iframe.contentWindow.postMessage(
+            {
+              IframeLink: IframeLink,
+            },
+            "*"
+          );
+        }
+
+        
+      // Call the function when the iframe is loaded
+      document.getElementById("my-iframe").addEventListener("load", sendDataToIframe);
+    </script>
+                      
+</body>
+</html>

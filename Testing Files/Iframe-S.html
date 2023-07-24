@@ -138,7 +138,6 @@
   let initialLink = ""; // Variable to store the initial link
 
   // Listen for messages from the parent page
-  // Consolidate the event listener for the "message" event to handle data and generate previews
   window.addEventListener("message", function (event) {
     if (event.data && event.data.links && event.data.seriesTitle) {
       links = event.data.links;
@@ -147,10 +146,6 @@
 
       // Use the received data to generate video previews
       generateVideoPreviews();
-    }
-
-    if (event.data && event.data.height) {
-      adjustIframeHeight(event);
     }
   });
 
@@ -204,11 +199,6 @@
     if (initialLink) {
       bigIframe.src = initialLink;
     }
-  }
-
-    // Function to adjust the height of the iframe based on the received data
-    function adjustIframeHeight(event) {
-    // ... (The same code as before for adjusting iframe height)
   }
 
   function showVideos() {
@@ -311,7 +301,6 @@
     bigIframe.dispatchEvent(new Event("click")); // Simulate a click event
   }
 </script>
-<script> src="https://WeebVoice.github.io/Testing%20Files/iframeResizerWindow.js"</script>
 
 <!--Support us Section-->
 

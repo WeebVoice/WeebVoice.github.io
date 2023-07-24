@@ -300,9 +300,7 @@
     bigIframe.src = link;
     bigIframe.dispatchEvent(new Event("click")); // Simulate a click event
   }
-</script>
 
-<script>
   // Function to adjust the height of the iframe based on the received data
   function adjustIframeHeight(event) {
     if (event.data && event.data.height) {

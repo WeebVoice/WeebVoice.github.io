@@ -75,18 +75,18 @@
     // Listen for the message event from the parent page
     window.addEventListener("message", function (event) {
       // Check the origin of the message (for security)
-      if (event.origin !== "*") {
+      if (event.origin !== "https://blog-weebtest.blogspot.com") {
         return; // Abort if the message is not from a trusted origin
       }
-
+  
       // Check if the message contains the IframeLink data
       if (event.data && event.data.IframeLink) {
-        const receivedIframeURL = event.data.IframeLink;
-        console.log("Received IframeLink:", receivedIframeURL);
-
+        const receivedIframeLink = event.data.IframeLink;
+        console.log("Received IframeLink:", receivedIframeLink);
+  
         // Set the received link as the source of the iframe (YouTube video URL)
         const iframe = document.getElementById("m-iframe");
-        iframe.setAttribute("src", receivedIframeURL);
+        iframe.setAttribute("src", receivedIframeLink);
       }
     });
   </script>

@@ -20,45 +20,58 @@
 
 <!--iframe container-->
 <div style="text-align: center">
-  <small
-    >Visit Main Site
-    <a
-      href="https://weeb-voice.blogspot.com/"
-      rel="noopener"
-      target="_blank"
-      class="small-link"
-      >WeebVoice</a
-    ></small
-  >
-  <div
-    id="video-container"
-    style="
-      height: 0px;
-      overflow: hidden;
-      padding-bottom: 56.25%;
-      position: relative;
-    "
-  ></div>
+  <div>
+    <small
+      >Visit Main Site
+      <a
+        href="https://weeb-voice.blogspot.com/"
+        rel="noopener"
+        target="_blank"
+        class="small-link"
+        >WeebVoice</a
+      ></small
+    >
+    <div
+      id="video-container"
+      style="
+        height: 0px;
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+      "
+    >
+      <iframe
+        allowfullscreen=""
+        id="big-iframe"
+        src=""
+        style="
+          border: 0;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        "
+      ></iframe>
+    </div>
+  </div>
+
+  <div style="margin-top: 10px">
+    <small>
+      Watch and download more Anime from
+      <a
+        href="https://weeb-voice.blogspot.com/"
+        rel="noopener"
+        target="_blank"
+        class="small-link"
+        >WeebVoice</a
+      >
+    </small>
+  </div>
 
   <!--Javascript for iframe-->
 
   <script>
-    const videoContainer = document.getElementById("video-container");
-    videoContainer.style.display = "none";
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const iframe = document.createElement("iframe");
-      iframe.setAttribute("allowfullscreen", "");
-      iframe.setAttribute("id", "m-iframe");
-      iframe.setAttribute(
-        "style",
-        "border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"
-      );
-      const videoContainer = document.getElementById("video-container");
-      videoContainer.appendChild(iframe);
-      videoContainer.style.display = "block";
-    });
-
     // Listen for the message event from the parent page
     window.addEventListener("message", function (event) {
       // Check the origin of the message (for security)
@@ -80,19 +93,6 @@
     });
   </script>
 
-  <div>
-    <small>
-      Watch and download more Anime from
-      <a
-        href="https://weeb-voice.blogspot.com/"
-        rel="noopener"
-        target="_blank"
-        class="small-link"
-        >WeebVoice</a
-      >
-    </small>
-  </div>
-  <p></p>
   <!--Support us Section-->
 
   <div>

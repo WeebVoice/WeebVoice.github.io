@@ -1,25 +1,6 @@
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap");
-
-  small {
-    font-size: 16.5px;
-    font-weight: bold;
-  }
-
-  .small-link {
-    color: #ff1a00;
-    font-family: "Permanent Marker";
-  }
-
-  body {
-    font-family: "Coming Soon";
-    color: white;
-  }
-</style>
-
 <!--iframe container-->
 <div style="text-align: center">
+  <div>
     <small
       >Visit Main Site
       <a
@@ -53,6 +34,7 @@
         "
       ></iframe>
     </div>
+  </div>
 
   <div style="margin-bottom: 10px;">
     <small>
@@ -78,8 +60,8 @@
       }
 
       // Check if the message contains the IframeLink data
-      if (event.data && event.data.IframeLink) { // Corrected the key here to "IframeLink"
-        const receivedIframeURL = event.data.IframeLink; // Corrected the key here to "IframeLink"
+      if (event.data && event.data.IframeLink) {
+        const receivedIframeURL = event.data.IframeLink;
         console.log("Received IframeLink:", receivedIframeURL);
 
         // Set the received link as the source of the iframe (YouTube video URL)

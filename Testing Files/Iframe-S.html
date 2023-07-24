@@ -138,6 +138,7 @@
   let initialLink = ""; // Variable to store the initial link
 
   // Listen for messages from the parent page
+  // Consolidate the event listener for the "message" event to handle data and generate previews
   window.addEventListener("message", function (event) {
     if (event.data && event.data.links && event.data.seriesTitle) {
       links = event.data.links;
@@ -146,6 +147,10 @@
 
       // Use the received data to generate video previews
       generateVideoPreviews();
+    }
+
+    if (event.data && event.data.height) {
+      adjustIframeHeight(event);
     }
   });
 
@@ -199,6 +204,11 @@
     if (initialLink) {
       bigIframe.src = initialLink;
     }
+  }
+
+    // Function to adjust the height of the iframe based on the received data
+    function adjustIframeHeight(event) {
+    // ... (The same code as before for adjusting iframe height)
   }
 
   function showVideos() {
@@ -300,17 +310,6 @@
     bigIframe.src = link;
     bigIframe.dispatchEvent(new Event("click")); // Simulate a click event
   }
-
-  // Function to adjust the height of the iframe based on the received data
-  function adjustIframeHeight(event) {
-    if (event.data && event.data.height) {
-      const iframe = document.getElementById("big-iframe");
-      iframe.style.height = event.data.height + "px";
-    }
-  }
-
-  // Listen for messages from the parent page
-  window.addEventListener("message", adjustIframeHeight, false);
 </script>
 
 <!--Support us Section-->

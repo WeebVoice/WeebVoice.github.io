@@ -1,0 +1,17 @@
+<style>@import url(https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap);@import url(https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap);small{font-size:16.5px;font-weight:700}.small-link{color:#ff1a00;font-family:"Permanent Marker"}body{font-family:"Coming Soon";color:#fff}</style><!--iframe container--><div style="text-align:center"><div><small>Visit Main Site <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank" class="small-link">WeebVoice</a></small><div id="video-container" style="height:0;overflow:hidden;padding-bottom:56.25%;position:relative"><iframe allowfullscreen id="m-iframe" src="" style="border:0;height:100%;left:0;position:absolute;top:0;width:100%"></iframe></div></div><div style="margin-bottom:10px"><small>Watch and download more Anime from <a href="https://weeb-voice.blogspot.com/" rel="noopener" target="_blank" class="small-link">WeebVoice</a></small></div><!--Javascript for iframe--><script>// Listen for the message event from the parent page
+    window.addEventListener("message", function (event) {
+      // Check the origin of the message (for security)
+      if (event.origin !== "https://blog-weebtest.blogspot.com") {
+        return; // Abort if the message is not from a trusted origin
+      }
+  
+      // Check if the message contains the IframeLink data
+      if (event.data && event.data.IframeLink) {
+        const receivedIframeLink = event.data.IframeLink;
+        console.log("Received IframeLink:", receivedIframeLink);
+  
+        // Set the received link as the source of the iframe (YouTube video URL)
+        const iframe = document.getElementById("m-iframe");
+        iframe.setAttribute("src", receivedIframeLink);
+      }
+    });</script><!--Support us Section--><div><small>Are You Really Enjoying this? Consider supporting us by<p></p><a href="https://weeb-voice.blogspot.com/p/join-us.html" target="_blank" class="small-link">Joining US</a></small></div></div>

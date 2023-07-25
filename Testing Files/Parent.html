@@ -9,88 +9,49 @@
     </h1>
   </head>
   <body>
-    <div>
+    <div id="post">
       <iframe
         frameborder="0"
         id="my-iframe"
-        src="C:\Users\blaze\OneDrive\Desktop\Coding Development\WeebVoice.github.io\Testing Files\Iframe-S.html"
-        style="width: 100%"
+        src="https://WeebVoice.github.io/stream-m.html"
+        style="width: 100%;"
       ></iframe>
     </div>
-
     <script>
-      const initialLink = "https://filemoon.sx/e/hx6b201jg4z2"; // Change Initially loading link for big-iframe
-
-      const links = [
-        "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-        "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-        "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-        "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-        "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-        "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-        "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-        "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-        "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-        "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-        "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-        "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-        "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-        "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-        "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-        "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-        "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-        "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-        "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-        "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-        "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-        "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-        "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-        "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-        "https://drive.google.com/file/d/1-x_UG6NZDMf4PQR2cofIbRWiz3zOob0X/preview",
-        "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
-        "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
-        "https://drive.google.com/file/d/1-oiWPeq16GwCNp20JHF9owTFrIy-O2yk/preview",
-        "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
-        "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
-        // Add more links as needed
-      ]; // Change all links for video-previews number of links generate same number of previews
-
-      const seriesTitle = "Attack on Titan S1"; // Change Title of Series used for Episode name in video-previews
-
-      // Function to send the data to the iframe, including height
+      // Define the IframeLink variable with the link you want to share
+      const IframeLink = "https://filemoon.sx/e/hx6b201jg4z2"; // Change IframeLink to change player video link
+    
+      // Function to send the data to the iframe
       function sendDataToIframe() {
         const iframe = document.getElementById("my-iframe");
-        const height = iframe.contentWindow.document.body.scrollHeight;
         iframe.contentWindow.postMessage(
           {
-            links: links,
-            seriesTitle: seriesTitle,
-            initialLink: initialLink,
-            height: height, // Add the height to the message
+            IframeLink: IframeLink,
           },
-          "*"
+          "https://WeebVoice.github.io" // Replace this with your iframe's origin
         );
       }
-
+    
       // Call the function when the iframe is loaded
       document
         .getElementById("my-iframe")
         .addEventListener("load", sendDataToIframe);
-
-      // Function to adjust the height of the my-iframe
-      function adjustMyIframeHeight() {
-        const myIframe = document.getElementById("my-iframe");
-        const height = myIframe.contentWindow.document.body.scrollHeight;
-        myIframe.style.height = height + "px";
-      }
-
-      // Call the function when the iframe is loaded
+    
+          // Call the function when the iframe is loaded
       document
         .getElementById("my-iframe")
-        .addEventListener("load", function () {
-          sendDataToIframe(); // Call the function to send data to the iframe
-          adjustMyIframeHeight(); // Call the function to adjust the height of my-iframe
-        });
-    </script>
+        .addEventListener("load", sendDataToIframe);
+    
+      // Function to calculate the iframe height based on the post container width
+      function calculateIframeHeight() {
+        const postWidth = document.querySelector('.post').offsetWidth;
+        const iframeHeight = 0.5625 * postWidth + 126; // Replace this formula with your desired calculation
+        document.getElementById('my-iframe').style.height = `${iframeHeight}px`;
+      }
+    
+      // Call the function initially and whenever the window is resized
+      calculateIframeHeight();
+      window.addEventListener('resize', calculateIframeHeight);
+    </script>    
   </body>
 </html>

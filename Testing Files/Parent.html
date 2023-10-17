@@ -7,6 +7,43 @@
     >
       Let's Rock Baby
     </h1>
+  
+    <style>
+      /* CSS styles go here */
+      #notification {
+        color: #000;
+        font-size: 20px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.7);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+      }
+    
+      #closeButton {
+        cursor: pointer;
+        align-self: flex-end;
+      }
+    </style>
+    <div id='notification'>
+      <div id='closeButton'>✖</div>
+      <p>Some of the Links may not be available as We are Currently Working on them 😅.</p>
+      <p>We apologize for this, but we will fix it soon 😇. Thanks for your cooperation😊</p>
+    </div>
+    
+    <script>
+      document.getElementById('closeButton').addEventListener('click', function() {
+        document.getElementById('notification').style.display = 'none';
+      });
+    </script>
+    
   </head>
   <body>
     <div id="post">

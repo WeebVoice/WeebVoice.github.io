@@ -1,24 +1,61 @@
+<!--
+  This code defines the styling for various elements in an WeebVoice Post.
+  It includes font sizes, alignments, and other visual properties for different classes and IDs.
+  It also defines styles for buttons, icons, and bullet points.
+-->
+
 <style>
   /* Center align text */
   .PNmed {
     text-align: center;
   }
-
   /* Set font size for text */
-  span.PNtext {
+  .PNtext {
+    font-size: 15px;
+    line-height: 1.8em;
+  }
+  /* Set font size for story */
+  .PNstory {
+    text-align: justify;
+    text-indent: 2em;
+  }
+  /* Set font size for buttons upper text*/
+  .PNbtnS {
     font-size: 16px;
+    font-weight: bold;
   }
-
-  /* Set font size for links */
-  span.PNlinks {
-    font-size: 16.5px;
+  /* Set font size for screenshoots */
+  .PNscreen {
+    font-size: 13.5px;
+    font-weight: bold;
+    text-decoration: underline;
   }
-
+  /* Set font size for Poster Caption */
+  .PNposterC {
+    font-size: 13.5px;
+    font-weight: bold;
+  }
   /* Set font size for title */
   #PNtitle {
-    font-size: 20px;
+    font-size: 18px;
+    color: #1576cd;
+    font-weight: bold;
   }
-
+  /* Set size for poster */
+  .PNposter {
+    width: 280px !important;
+    height: auto !important;
+    line-height: normal !important;
+    border-radius: 5px !important;
+    display: inline-block !important;
+  }
+  /* Set size for screenshoots */
+  .PNscreenim {
+    width: 376px !important;
+    height: auto !important;
+    border-radius: 5px !important;
+    margin-bottom: 1em !important;
+  }
   /* Styling for buttons */
   button.links-button,
   button.dupBtn,
@@ -39,19 +76,16 @@
     max-width: 320px;
     transition: background-color 0.3s ease;
   }
-
   /* Hover effect for buttons */
   button.links-button:hover,
   button.dupBtn:hover,
   button.join-us:hover {
     background-color: #41b375;
   }
-
   /* Hide links button initially */
   button.links-button {
     display: none;
   }
-
   /* Adjust the size of the button during countdown */
   button.dupBtn.countdown {
     width: 64px;
@@ -60,35 +94,11 @@
     justify-content: center;
     transition: width 1s ease, height 1s ease;
   }
-
-  .series-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .series-left,
-  .series-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* Styling for buttons in series-left and series-right */
-  .series-left > button.dupBtn,
-  .series-right > button.dupBtn {
-    min-width: 147px;
-    justify-content: center;
-  }
-
   /* Styling for icons */
   .icon {
     flex-shrink: 0;
     display: inline-flex;
   }
-
   /* Styling for download icon */
   .icon::before {
     content: "";
@@ -98,226 +108,239 @@
     background-repeat: no-repeat;
     background-position: center;
   }
-
   /* Styling for icon spacing */
   .icon::after {
     content: "";
     padding: 0 4px;
   }
-
   /* Styling for download icon in Download section */
   .icon.dl-icon::before {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fefefe' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'><polyline points='8 17 12 21 16 17'/><line x1='12' y1='12' x2='12' y2='21'/><path d='M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29'/></svg>");
   }
-
   /* Styling for link icon in Download section */
   .icon.link-icon::before {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fefefe' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'><path d='M13.5 12C13.5 15.18 10.93 17.75 7.75 17.75C4.57 17.75 2 15.18 2 12C2 8.82 4.57 6.25 7.75 6.25'></path><path d='M10 12C10 8.69 12.69 6 16 6C19.31 6 22 8.69 22 12C22 15.31 19.31 18 16 18'></path></svg>");
   }
-
   /* Styling for stream icon in Watch Now */
   .icon.st-icon::before {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fefefe' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'><path d='M6 11.9999V9.32992C6 6.01992 8.35 4.65992 11.22 6.31992L13.53 7.65992L15.84 8.99992C18.71 10.6599 18.71 13.3699 15.84 15.0299L13.53 16.3699L11.22 17.7099C8.35 19.3399 6 17.9899 6 14.6699V11.9999Z' stroke-miterlimit='10'></path></svg>");
   }
-
   /* Styling for Join us icon */
   .icon.go-link::before {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fefefe' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'><path d='M7.39999 6.32003L15.89 3.49003C19.7 2.22003 21.77 4.30003 20.51 8.11003L17.68 16.6C15.78 22.31 12.66 22.31 10.76 16.6L9.91999 14.08L7.39999 13.24C1.68999 11.34 1.68999 8.23003 7.39999 6.32003Z'/><path d='M10.11 13.6501L13.69 10.0601'/></svg>");
   }
+  /* Set bullets point */
+  li::marker {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: start !important;
+  }
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
 </style>
 
-<!-- Download section -->
+<!--
+  Summary: This code is an HTML file for WeebVoice movie.
+  It includes details such as  movie info, screenshots, and a story description.
+  The code also includes buttons for movie links, online watching, and downloading.
+-->
+
+<!--Center Alingment-->
 <div class="PNmed">
-  <!-- Download options -->
-  <p>
-    <span class="PNlinks">
-      <b>Download</b>
-    </span>
-  </p>
-  <p>
-    <span class="PNtext">
-      <b>1080p&nbsp;</b>&amp;<b>&nbsp;720p&nbsp;</b>Quality
-    </span>
-  </p>
-
-  <!-- Join us section -->
-  <p>
-    <span class="PNtext">Want to know about Anime and latest News Alerts</span>
-  </p>
-  <p>
-    <button
-      class="join-us"
-      onclick="window.open('https://weebvoice.blogspot.com/p/join-us.html', '_blank')"
-    >
-      <i class="icon go-link"></i>
-      Join us
-    </button>
-  </p>
-
-  <!-- Support us section -->
-  <p>
-    <span class="PNtext">If you enjoy this, then Please Support us</span>
-  </p>
-
-  <!-- Download links -->
-
-  <div class="series-container">
-    <div class="series-left">
-      <b>
-        <div id="PNtitle">G-Drive 720p</div>
-      </b>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 1-6
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 7-12
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 13-18
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 19-24
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
-    </div>
-    <div class="series-right">
-      <b>
-        <div id="PNtitle">MEGA 1080p</div>
-      </b>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 1-6
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 7-12
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 13-18
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
-      <button class="dupBtn" onclick="Countdown(this);">
-        <i class="icon link-icon"></i>
-        Episode 19-24
-      </button>
-      <button
-        class="links-button"
-        onclick="window.open('https://link.short2url.in/', '_blank', 'noopener,noreferrer')"
-      >
-        <i class="icon dl-icon"></i>
-        Download
-      </button>
+  <div>
+    <img src="image Url here" alt="image alt here" class="PNposter" />
+  </div>
+  <span class="PNposterC">Series Japanease Title</span>
+</div>
+<p></p>
+<!--All Text Size-->
+<section class="PNtext">
+  <!--Heading Title-->
+  <div id="PNtitle">General Info:</div>
+  <ul>
+    <!--Bullet Points-->
+    <li>Name:</li>
+    <li>
+      Genre: Horror, Drama, Dark fantasy, Fantasy, Adventure, Action fiction,
+      Apocalyptic and post-apocalyptic fiction Romance, Slice of life, Science
+      fiction, Romance, Comedy
+    </li>
+    <li>Status: Finished Airing</li>
+    <li>No. of Seasons:</li>
+    <li>Language: Dual Audio (Hindi & ENG)</li>
+    <li>Duration: 24 min. per ep.</li>
+    <li>Audio & Video Encoder: WeebVoice</li>
+    <li>Age Rating: R - 17+ (violence & profanity)</li>
+  </ul>
+  <!--Heading Title-->
+  <div id="PNtitle">Season Info:</div>
+  <ul>
+    <!--Bullet Points-->
+    <li>Name:</li>
+    <li>Status: Finished Airing</li>
+    <li>Aired (Season 1):</li>
+    <li>Dubbed By:</li>
+    <li>No. of Episodes:</li>
+    <li>MyAnimeList: Rating 0.0/10</li>
+    <li>Quality: 1080p, 720p</li>
+    <li>Size: 420-250 MB, 240-180 MB</li>
+  </ul>
+  <!--Center Alingment-->
+  <div class="PNmed">
+    <!--Season Screenshots-->
+    <span class="PNscreen">Season Screenshots</span>
+    <div>
+      <img src="image Url here" alt="image alt here" class="PNscreenim" />
     </div>
   </div>
-</div>
+  <!-- Story content goes here -->
+  <div id="PNtitle">Story:</div>
+  <span class="PNstory">
+    <p>
+      Denji is robbed of a normal teenage life, left with nothing but his
+      deadbeat father's overwhelming debt. His only companion is his pet, the
+      chainsaw devil Pochita, with whom he slays devils for money that
+      inevitably ends up in the yakuza's pockets. All Denji can do is dream of a
+      good, simple life: one with delicious food and a beautiful girlfriend by
+      his side. But an act of greedy betrayal by the yakuza leads to Denji's
+      brutal, untimely death, crushing all hope of him ever achieving happiness.
+    </p>
+    <p>
+      Remarkably, an old contract allows Pochita to merge with the deceased
+      Denji and bestow devil powers on him, changing him into a hybrid able to
+      transform his body parts into chainsaws. Because Denji's new abilities
+      pose a significant risk to society, the Public Safety Bureau's elite devil
+      hunter Makima takes him in, letting him live as long as he obeys her
+      command. Guided by the promise of a content life alongside an attractive
+      woman, Denji devotes everything and fights with all his might to make his
+      naive dreams a reality.
+    </p>
+  </span>
+  <!--Center Alingment-->
+  <div class="PNmed">
+    <!--Buttons Upper Text-->
+    <p>
+      <span class="PNbtnS">Series Links</span>
+    </p>
+    <p>
+      <span class="PNbtnS">1080p &amp; 720p</span>
+    </p>
+
+    <!--Buttons-->
+    <p>
+      <button class="dupBtn" onclick="Countdown(this);">
+        <i class="icon link-icon"></i>
+        Generate Link
+      </button>
+      <button
+        class="links-button"
+        onclick="window.open('https://weeb-archive.blogspot.com/','_blank','noopener noreferrer')"
+      >
+        <i class="icon st-icon"></i>
+        Watch Online
+      </button>
+    </p>
+    <p>
+      <button class="dupBtn" onclick="Countdown(this);">
+        <i class="icon link-icon"></i>
+        Generate Link
+      </button>
+      <button
+        class="links-button"
+        onclick="window.open('https://weeb-archive.blogspot.com/','_blank','noopener noreferrer')"
+      >
+        <i class="icon dl-icon"></i>
+        Download
+      </button>
+    </p>
+  </div>
+</section>
 
 <script>
-  var buttons = document.querySelectorAll(".dupBtn");
+  // Get all the buttons with class "dupBtn"
+var buttons = document.querySelectorAll(".dupBtn");
 
-  function startCountdown(button) {
-    var countdownValue = button.countdownValue || 10; // Use previous countdown value if available
-    button.countdownInterval = setInterval(function () {
-      button.innerText = countdownValue;
-      countdownValue--;
-      if (countdownValue < 0) {
-        clearInterval(button.countdownInterval);
-        // Hide the countdown button
-        button.style.display = "none";
-        // Show the links button
-        var linksButton = button.nextElementSibling;
-        linksButton.style.display = "inline-flex";
-        // Enable all countdown buttons
-        buttons.forEach(function (btn) {
-          btn.disabled = false;
-        });
-      }
-    }, 1250);
-  }
+// Function to start the countdown
+function startCountdown(button) {
+  // Use previous countdown value if available
+  var countdownValue = button.countdownValue || 10;
 
-  function Countdown(button) {
-    // Disable all countdown buttons
-    buttons.forEach(function (btn) {
-      btn.disabled = true;
-    });
-    // Disable the clicked countdown button
-    button.disabled = true;
-    // Add the countdown class
-    button.classList.add("countdown");
-    startCountdown(button);
-  }
+  // Interval function to update the countdown
+  button.countdownInterval = setInterval(function() {
+    button.innerText = countdownValue;
+    countdownValue--;
 
-  document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "hidden") {
-      pauseCountdowns();
-    } else if (document.visibilityState === "visible") {
-      resumeCountdowns();
+    // Check if countdown is complete
+    if (countdownValue < 0) {
+      clearInterval(button.countdownInterval);
+
+      // Hide the countdown button
+      button.style.display = "none";
+
+      // Show the links button
+      var linksButton = button.nextElementSibling;
+      linksButton.style.display = "inline-flex";
+
+      // Enable all countdown buttons
+      buttons.forEach(function(btn) {
+        btn.disabled = false;
+      });
     }
+  }, 1250);
+}
+
+// Function to handle countdown
+function Countdown(button) {
+  // Disable all countdown buttons
+  buttons.forEach(function(btn) {
+    btn.disabled = true;
   });
 
-  function pauseCountdowns() {
-    buttons.forEach(function (button) {
-      clearInterval(button.countdownInterval);
-      button.countdownValue = parseInt(button.innerText); // Store the current countdown value
-    });
-  }
+  // Disable the clicked countdown button
+  button.disabled = true;
 
-  function resumeCountdowns() {
-    buttons.forEach(function (button) {
-      if (button.classList.contains("countdown")) {
-        startCountdown(button);
-      }
-    });
+  // Add the countdown class
+  button.classList.add("countdown");
+
+  // Start the countdown
+  startCountdown(button);
+}
+
+// Event listener for visibility change
+document.addEventListener("visibilitychange", function() {
+  if (document.visibilityState === "hidden") {
+    pauseCountdowns();
+  } else if (document.visibilityState === "visible") {
+    resumeCountdowns();
   }
+});
+
+// Function to pause countdowns
+function pauseCountdowns() {
+  buttons.forEach(function(button) {
+    clearInterval(button.countdownInterval);
+
+    // Store the current countdown value
+    button.countdownValue = parseInt(button.innerText);
+  });
+}
+
+// Function to resume countdowns
+function resumeCountdowns() {
+  buttons.forEach(function(button) {
+    if (button.classList.contains("countdown")) {
+      startCountdown(button);
+    }
+  });
+}
 </script>

@@ -1,5 +1,5 @@
-<div id="post"><iframe allowfullscreen frameborder="0" id="my-iframe" src="C:\Users\blaze\Desktop\Coding Development\WeebVoice.github.io\Testing Files\Test2.min.html" style="width:100%"></iframe></div><script>// Define the IframeLink variable with the link you want to share
-  const IframeLink = "https://filemoon.sx/e/hx6b201jg4z2"; // Change IframeLink to change player video link
+<html style="background-color:#000"><div id="post"><iframe allowfullscreen frameborder="0" id="my-iframe" src="C:\Users\blaze\Desktop\Coding Development\WeebVoice.github.io\Testing Files\frame.min.html" style="width:100%"></iframe></div><script>// Define the IframeLink variable with the link you want to share
+  const IframeLink = "https://drive.google.com/file/d/10RHmwgAUcXRhGnoUQaDgD6fhaIasfAkP/preview"; // Change IframeLink to change player video link
 
   // Function to send the data to the iframe
   function sendDataToIframe() {
@@ -20,10 +20,10 @@
   // Function to calculate the iframe height based on the post container width
   function calculateIframeHeight() {
     const postWidth = document.querySelector(".post").offsetWidth;
-    const iframeHeight = 0.5625 * postWidth + 140; // Replace this formula with your desired calculation
+    const iframeHeight = 0.5625 * postWidth + 155; // Replace this formula with your desired calculation
     document.getElementById("my-iframe").style.height = `${iframeHeight}px`;
   }
 
   // Call the function initially and whenever the window is resized
   calculateIframeHeight();
-  window.addEventListener("resize", calculateIframeHeight);</script>
+  window.addEventListener("resize", calculateIframeHeight);</script></html>

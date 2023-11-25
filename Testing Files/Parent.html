@@ -1,41 +1,29 @@
-<div id="post">
-  <iframe
-    allowfullscreen=""
-    frameborder="0"
-    id="my-iframe"
-    src="C:\Users\blaze\Desktop\Coding Development\WeebVoice.github.io\Testing Files\frame.min.html"
-    style="width: 100%"
-  ></iframe>
+<!--Series Parent-->
+<div id="post-s">
+
+  <script>
+    const initialLink = "https://www.youtube.com/embed/KBtk5FUeJbk"; // Change Initially loading link for s-iframe
+
+    const links = [
+      "https://drive.google.com/file/d/10RHmwgAUcXRhGnoUQaDgD6fhaIasfAkP/preview",
+      "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+      "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
+      "https://drive.google.com/file/d/110RHmwgAUcXRhGnoUQaDgD6fhaIasfAkP/preview",
+      "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
+      "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
+      "https://drive.google.com/file/d/10RHmwgAUcXRhGnoUQaDgD6fhaIasfAkP/preview",
+      "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+      "https://drive.google.com/file/d/1-sxF1QAoMxbF4Ge7umsLl01rmtoZvSvG/preview",
+      "https://drive.google.com/file/d/110RHmwgAUcXRhGnoUQaDgD6fhaIasfAkP/preview",
+      "https://drive.google.com/file/d/1-ncSWvMGQfeTfP9RdI53Iq1FPNgk5O7D/preview",
+      "https://drive.google.com/file/d/1-dfFFOjM98xVbVOUxv4bZa2ARn_g_6zO/preview",
+      "https://drive.google.com/file/d/10RHmwgAUcXRhGnoUQaDgD6fhaIasfAkP/preview",
+      "https://drive.google.com/file/d/1-x8oonNblyf1EyiutSBMS2W7zj2bTc0F/preview",
+      // Add more links as needed
+    ]; // Change all links for video-previews number of links generate same number of previews
+
+    const seriesTitle = "Attack on Titan S1"; // Change Title of Series used for Episode name in video-previews
+
+  </script>
+
 </div>
-<script>
-  // Define the IframeLink variable with the link you want to share
-  const IframeLink =
-    "https://drive.google.com/file/d/10RHmwgAUcXRhGnoUQaDgD6fhaIasfAkP/preview"; // Change IframeLink to change player video link
-
-  // Function to send the data to the iframe
-  function sendDataToIframe() {
-    const iframe = document.getElementById("my-iframe");
-    iframe.contentWindow.postMessage(
-      {
-        IframeLink: IframeLink,
-      },
-      "https://WeebVoice.github.io" // Replace this with your iframe's origin
-    );
-  }
-
-  // Call the function when the iframe is loaded
-  document
-    .getElementById("my-iframe")
-    .addEventListener("load", sendDataToIframe);
-
-  // Function to calculate the iframe height based on the post container width
-  function calculateIframeHeight() {
-    const postWidth = document.querySelector(".post").offsetWidth;
-    const iframeHeight = 0.5625 * postWidth + 205; // Replace this formula with your desired calculation
-    document.getElementById("my-iframe").style.height = `${iframeHeight}px`;
-  }
-
-  // Call the function initially and whenever the window is resized
-  calculateIframeHeight();
-  window.addEventListener("resize", calculateIframeHeight);
-</script>

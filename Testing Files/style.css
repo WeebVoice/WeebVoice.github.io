@@ -5,12 +5,12 @@
 }
 
 /* Set font size for text */
-span.PNtext {
+.PNtext {
   font-size: 16px;
 }
 
 /* Set line height */
-span.line {
+.line {
   line-height: 25px;
 }
 

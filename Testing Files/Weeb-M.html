@@ -1,94 +1,33 @@
-<script>
-/*<![CDATA[*/document.addEventListener("DOMContentLoaded", function () {
-    var postMElement = document.getElementById("post-m");
-    var initialLinkElement = document.getElementById("initialLink");
-    var mIframeLinkElement = document.getElementById("m-iframeLink");
-
-    if (postMElement && initialLinkElement && mIframeLinkElement) {
-        // Try to retrieve the link from the cookie
-        var initialLink = getCookie("initialLink");
-
-        // If not found, use the link from the element
-        if (!initialLink) {
-            initialLink = initialLinkElement.href;
-
-            // Set the link in the cookie for future use
-            setCookie("initialLink", initialLink, 3);
-        }
-
-        // Insert the code into the post
-        postMElement.innerHTML = `
-            <div class="PNmed">
-                <div id="PNtext">
-                    <div>
-                        <span class="line">Visit Main Site 
-                            <a class="site" href="https://weebvoice.blogspot.com/" target="_blank">WeebVoice</a>
-                        </span>
-                        <div id="video-container" style="height: 0px; overflow: hidden; padding-bottom: 56.25%; position: relative; margin-bottom: 14px;">
-                            <iframe allowfullscreen="" id="m-iframe" src="" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
-                        </div>
-                    </div>
-                    <span class="line">Watch and download more Anime from 
-                        <a class="site" href="https://weebvoice.blogspot.com/" target="_blank">WeebVoice</a>
-                    </span>
-                    <div>
-                        <button class="links-button" onclick="document.getElementById('m-iframe').src = document.getElementById('m-iframeLink').href">
-                            <i class="icon st-icon"></i>
-                            Watch Now
-                        </button>
-                    </div>
-                    <span class="line">
-                        Are You Really Enjoying this? Consider supporting us by
-                    </span>
-                    <div>
-                        <button
-                            class="links-button"
-                            onclick="window.open('https://weebvoice.blogspot.com/p/join-us.html', '_blank')"
-                            >
-                            <i class="icon go-link"></i>
-                            Join us
-                        </button>
-                    </div>
-                </div>
+<!--iframe container-->
+<div class="PNmed">
+    <div id="PNtext">
+        <div>
+            <span class="line">Visit Main Site
+                <a href="https://weebvoice.blogspot.com/" target="_blank" class="site">WeebVoice</a></span>
+            <div id="post-iframe">
+                <iframe allowfullscreen="" id="m-iframe" src=""></iframe>
             </div>
-        `;
+        </div>
 
-        // Load the initial link in the m-iframe
-        var mIframe = document.getElementById("m-iframe");
-        if (initialLink) {
-            mIframe.src = initialLink;
-        }
+        <span class="line">
+            Watch and download more Anime from
+            <a href="https://weebvoice.blogspot.com/" target="_blank" class="site">WeebVoice</a>
+        </span>
+        <!--Video Previews-->
+        <div class="video-container" id="video-previews"></div>
 
-        // Set the m-iframe src when the button is clicked
-        var watchNowButton = document.querySelector(".links-button");
-        watchNowButton.addEventListener("click", function () {
-            mIframe.src = mIframeLinkElement.href;
-			// Update the cookie with the new link
-			setCookie("initialLink", mIframeLinkElement.href, 3);
-        });
-    }
-});
-
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + hours * 60 * 60 * 1000);
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-/*]]>*/
-</script>
+        <!--Support us Section-->
+        <p>
+            <span class="line">
+                Are You Really Enjoying this? Consider supporting us by
+            </span>
+        <div>
+            <button class="links-button"
+                onclick="window.open('https://weebvoice.blogspot.com/p/join-us.html', '_blank')">
+                <i class="icon go-link"></i>
+                Join us
+            </button>
+        </div>
+        </p>
+    </div>
+</div>

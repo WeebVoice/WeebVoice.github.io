@@ -1,52 +1,3 @@
-/*<![CDATA[*/
-document.addEventListener("DOMContentLoaded", function () {
-  // Check if the post-s element exists
-  var postSElement = document.getElementById("post-s");
-
-  if (postSElement) {
-    // Dynamically insert HTML into the post-s element
-    postSElement.innerHTML = `
-		<!--iframe container-->
-  <div class="PNmed">
-	  <div id="PNtext">
-		  <div>
-			  <span class="line">Visit Main Site 
-				  <a href="https://weebvoice.blogspot.com/" target="_blank" class="site">WeebVoice</a></span>
-			  <div id="post-iframe">
-				  <iframe allowfullscreen="" id="s-iframe" src=""></iframe>
-			  </div>
-		  </div>
-  
-		  <span class="line">
-			  Watch and download more Anime from
-			  <a href="https://weebvoice.blogspot.com/" target="_blank" class="site">WeebVoice</a>
-		  </span>
-		  <!--Video Previews-->
-		  <div class="video-container" id="video-previews"></div>
-  
-		  <!--Pagination-->
-		  <div id="pagination">
-			  <button id="prev-button">Prev</button>
-		  </div>
-		  <!--Support us Section-->
-		  <p>
-			  <span class="line">
-				  Are You Really Enjoying this? Consider supporting us by 
-			  </span>
-		  <div>
-			  <button class="links-button"
-				  onclick="window.open('https://weebvoice.blogspot.com/p/join-us.html', '_blank')">
-				  <i class="icon go-link"></i>
-				  Join us
-			  </button>
-		  </div>
-		  </p>
-	  </div>
-  </div>
-	  `;
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   const sIframe = document.getElementById("s-iframe");
   const videoPreviewsContainer = document.getElementById("video-previews");
@@ -233,4 +184,3 @@ document.addEventListener("DOMContentLoaded", function () {
     return null;
   }
 });
-/*]]>*/

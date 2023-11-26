@@ -6,12 +6,12 @@
 	}
 
 	/* Set font size for text */
-	span.PNtext {
+	.PNtext {
 		font-size: 16px;
 	}
 
 	/* Set line height */
-	span.line {
+	.line {
 		line-height: 25px;
 	}
 
@@ -176,7 +176,28 @@
 
 
 
-<!--Movie Script Cookie-->
+<script>
+	const postM = document.getElementById('post-m');
+	const postS = document.getElementById('post-s');
+
+	function loadAndExecuteScript(url) {
+		const script = document.createElement('script');
+		script.src = url;
+		document.body.appendChild(script);
+	}
+
+	if (postM) {
+		// Execute the external script for post-s
+		loadAndExecuteScript('https://weebvoice.github.io/Testing%20Files/script.min.js');
+	} else if (postS) {
+		// Execute the second script for post-m
+		loadAndExecuteScript('https://weebvoice.github.io/Testing%20Files/script%20copy.min.js');
+	}
+</script>
+
+
+<!--Both script are Movie Script-->
+<!--HTML insert-->
 <script>
 	/*<![CDATA[*/
 	document.addEventListener("DOMContentLoaded", function () {
@@ -224,6 +245,7 @@
 	});
 	/*]]>*/
 </script>
+<!--Executibng Code-->
 <script>
 	/*<![CDATA[*/
 	document.addEventListener("DOMContentLoaded", function () {
@@ -251,37 +273,37 @@
 		function generateVideoPreviews() {
 			videoPreviewsContainer.innerHTML = "";
 
-				const link = miframeLink;
+			const link = miframeLink;
 
-				// Create video preview container
-				const videoPreview = document.createElement("div");
-				videoPreview.classList.add("video-preview");
-				videoPreview.addEventListener("click", function () {
-					changeIframeSource(link);
-				});
+			// Create video preview container
+			const videoPreview = document.createElement("div");
+			videoPreview.classList.add("video-preview");
+			videoPreview.addEventListener("click", function () {
+				changeIframeSource(link);
+			});
 
-				// Create video title
-				const videoTitle = document.createElement("span");
-				videoTitle.classList.add("video-title");
+			// Create video title
+			const videoTitle = document.createElement("span");
+			videoTitle.classList.add("video-title");
 
-				// Combine the series title and episode number
-				videoTitle.textContent = movieTitle;
+			// Combine the series title and episode number
+			videoTitle.textContent = movieTitle;
 
-				// Create preview image
-				const videoId = extractVideoId(link);
-				const thumbnailLink = `https://drive.google.com/thumbnail?id=${videoId}`;
-				const pImg = document.createElement("img");
-				pImg.alt = videoTitle.textContent;
-				pImg.src = thumbnailLink;
-				pImg.id = "pImg";
+			// Create preview image
+			const videoId = extractVideoId(link);
+			const thumbnailLink = `https://drive.google.com/thumbnail?id=${videoId}`;
+			const pImg = document.createElement("img");
+			pImg.alt = videoTitle.textContent;
+			pImg.src = thumbnailLink;
+			pImg.id = "pImg";
 
-				// Append elements to the video preview container
-				videoPreview.appendChild(pImg);
-				videoPreview.appendChild(videoTitle);
+			// Append elements to the video preview container
+			videoPreview.appendChild(pImg);
+			videoPreview.appendChild(videoTitle);
 
-				// Append the video preview to the container
-				videoPreviewsContainer.appendChild(videoPreview);
-			}
+			// Append the video preview to the container
+			videoPreviewsContainer.appendChild(videoPreview);
+		}
 
 		// Function to extract video ID from the Google Drive link
 		function extractVideoId(link) {
@@ -322,7 +344,8 @@
 	/*]]>*/
 </script>
 
-<!--Series Script Cookie-->
+<!--Both script are Series Script-->
+<!--HTML insert-->
 <script>
 	/*<![CDATA[*/
 	document.addEventListener("DOMContentLoaded", function () {
@@ -374,6 +397,7 @@
 	});
 	/*]]>*/
 </script>
+<!--Executibng Code-->
 <script>
 	/*<![CDATA[*/
 	document.addEventListener("DOMContentLoaded", function () {

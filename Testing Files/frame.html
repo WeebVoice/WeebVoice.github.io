@@ -174,27 +174,18 @@
 	}
 </style>
 
-
-
 <script>
 	const postM = document.getElementById('post-m');
 	const postS = document.getElementById('post-s');
 
-	function loadAndExecuteScript(url) {
-		const script = document.createElement('script');
-		script.src = url;
-		document.body.appendChild(script);
-	}
-
 	if (postM) {
-		// Execute the external script for post-s
-		loadAndExecuteScript('https://weebvoice.github.io/Testing%20Files/script.min.js');
+		// Execute the external script for post-m
+		document.write('<script src="https://weebvoice.github.io/Weeb-M.js"/>');
 	} else if (postS) {
-		// Execute the second script for post-m
-		loadAndExecuteScript('https://weebvoice.github.io/Testing%20Files/script%20copy.min.js');
+		// Execute the second script for post-s
+		document.write('<script src="https://weebvoice.github.io/Weeb-S.js"/>');
 	}
 </script>
-
 
 <!--Both script are Movie Script-->
 <!--HTML insert-->

@@ -1,2 +1,24 @@
-var postMElement=document.getElementById("post-m");postMElement&&(postMElement.innerHTML=`<div class="PNmed"><div id="PNtext"><div><span class="line">Visit Main Site <a href="https://weebvoice.blogspot.com/" target="_blank" class="site">WeebVoice</a></span><div id="post-iframe"><iframe allowfullscreen="" id="m-iframe" src=""></iframe></div></div><span class="line">Watch and download more Anime from <a href="https://weebvoice.blogspot.com/" target="_blank" class="site">WeebVoice</a></span><div class="video-container" id="video-previews"></div><p><span class="line">Are You Really Enjoying this? Consider supporting us by </span><div><button class="links-button" onclick="window.open(\'https://weebvoice.blogspot.com/p/join-us.html\', \'_blank\')"><i class="icon go-link"></i>Join us</button></div></p></div></div>`);
-const mIframe=document.getElementById("m-iframe"),videoPreviewsContainer=document.getElementById("video-previews"),lastClickedLink=getCookie("m-link");function changeIframeSource(e){let i=window.location.pathname;mIframe.src=e,setCookie("m-link",e,3,i)}function generateVideoPreviews(){videoPreviewsContainer.innerHTML="";let e=miframeLink,i=document.createElement("div");i.classList.add("video-preview"),i.addEventListener("click",function(){changeIframeSource(e)});let t=document.createElement("span");t.classList.add("video-title"),t.textContent=movieTitle;let n=extractVideoId(e),o=`https://drive.google.com/thumbnail?id=${n}`,s=document.createElement("img");s.alt=t.textContent,s.src=o,s.id="pImg",i.appendChild(s),i.appendChild(t),videoPreviewsContainer.appendChild(i)}function extractVideoId(e){let i=e.match(/\/d\/(.*?)\//);return i?i[1]:null}function setCookie(e,i,t,n){let o=new Date;o.setTime(o.getTime()+36e5*t);let s="expires="+o.toUTCString();document.cookie=e+"="+i+";"+s+";"+(n?"path="+n+";":"")}function getCookie(e){let i=e+"=",t=decodeURIComponent(document.cookie),n=t.split(";");for(let o=0;o<n.length;o++){let s=n[o];for(;" "==s.charAt(0);)s=s.substring(1);if(0==s.indexOf(i))return s.substring(i.length,s.length)}return null}lastClickedLink?mIframe.src=lastClickedLink:initialLink&&(mIframe.src=initialLink),generateVideoPreviews();
+/*<![CDATA[*/
+// Identify the post ID dynamically
+const postM = document.getElementById("post-m");
+const postS = document.getElementById("post-s");
+
+// Load script based on post id "post-m" or "post-s"
+if (postM) {
+  // If post-m, dynamically insert Weeb-M.js
+  var scriptM = document.createElement("script");
+  scriptM.src = "https://weebvoice.github.io/Weeb-M.js";
+  scriptM.onload = function () {
+    // Your code dependent on Weeb-M.js can go here
+  };
+  document.head.appendChild(scriptM);
+} else if (postS) {
+  // iIf post-s, dynamically insert Weeb-S.js
+  var scriptS = document.createElement("script");
+  scriptS.src = "https://weebvoice.github.io/Weeb-S.js";
+  scriptS.onload = function () {
+    // Your code dependent on Weeb-S.js can go here
+  };
+  document.head.appendChild(scriptS);
+}
+/*]]>*/

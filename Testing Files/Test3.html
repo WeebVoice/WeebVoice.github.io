@@ -1,79 +1,25 @@
-<script>
-  /*<![CDATA[*/
-  const baseUrl = 'https://cdn.jsdelivr.net/gh/ngylduy/blog@d0ca1ff';
-  function puViews() {
-    if ("" != PuSet.realViews.databaseUrl && null != getid("fb-db") && 0 < firebase.apps.length)
-      for (var n = qSell(".pu-views"), u = firebase.database(), d = 0; d < n.length; d++) {
-        var a = n[d],
-          r = a.getAttribute('data-id');
-        (r = u.ref("BlogID_" + blogID + "/PostID_" + r)).once("value", function (u, d) {
-          return function (e) {
-            0 < (e = e.exists() ? e.val() : 0) && ("true" == PuSet.realViews.abbreviation ? u.setAttribute('data-text', Pu.abv(e)) : u.setAttribute("data-text", e), remCt(u, "hidden")), "true" == u.getAttribute("data-add") && (u.setAttribute("data-add", !1), e = parseInt(e) + 1, d.set(e))
-          }
-        }(a, r))
-      }
-  }
-  function blogAdmin() {
-    null != qSel("#maintainCont") && addCt(qSel("#maintainCont"), "hdn")
-  }
-  var aryLzJs = [];
-  function loadLzJs() {
-    var t, n;
-    aryLzJs.push(1), ldJs(baseUrl + '/js/AdditionalJavascripts.min.js', 'adtnl-js', !1, 'body', function () {
-      null != qSel('#themeBtn') && ldCss(baseUrl + '/css/ThemeColor.min.css', "thmC-css")
-    }), Defer(function () {
-      var blogName = 'Weebvoice',
-        licenseFor = 'https://weebvoice.blogspot.com/'
-      console.log('Licensed to: ' + blogName + ' Licensed for: ' + licenseFor)
-    }, 1e3)
-    null != typeof PuSet.license.key && ('true' == isSingleItem && ldJs(baseUrl + '/js/NoInternetWidget.min.js', 'noInt-js', !0, 'body')
-      , Defer(function () {
-        function e() {
-          dataLayer.push(arguments)
-        }
-        ldCss('https://www.blogger.com/dyn-css/authorization.css?targetBlogID=' + blogID, "auth-css", function () {
-          var e = qSel('#admCk');
-          null != e && "block" == window.getComputedStyle(e).display && blogAdmin()
-        }), 0 < qSell("div.hl pre").length && ldJs(baseUrl + '/lib/highlight-11.5.0.min.js', 'hl-js', !0, "body", function () {
-          qSell('div.hl pre').forEach(e => {
-            hljs.highlightElement(e)
-          })
-        }), "" != PuSet.analytics.propertyID && ((u = document.createElement('script')).src = "https://www.googletagmanager.com/gtag/js?id=" + PuSet.analytics.propertyID, document.body.appendChild(u), window.dataLayer = window.dataLayer || [], e("js", new Date), e("config", PuSet.analytics.propertyID)), "" != PuSet.realViews.databaseUrl && ldJs('https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js', "fb-app", !0, "head", function () {
-          ldJs('https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js', 'fb-db', !0, 'head', function () {
-            var t = qSell('.pu-views'),
-              n = {};
-            n.databaseURL = PuSet.realViews.databaseUrl, firebase.initializeApp(n);
-            for (var d = firebase.database(), a = 0; a < t.length; a++) {
-              var r = t[a],
-                s = r.getAttribute('data-id');
-              (s = d.ref('BlogID_' + blogID + '/PostID_' + s)).once("value", function (u, d) {
-                return function (e) {
-                  0 < (e = e.exists() ? e.val() : 0) && ('true' == PuSet.realViews.abbreviation ? u.setAttribute('data-text', Pu.abv(e)) : u.setAttribute('data-text', e), remCt(u, 'hidden')), "true" == u.getAttribute('data-add') && (u.setAttribute('data-add', !1), e = parseInt(e) + 1, d.set(e))
-                }
-              }(r, s))
-            }
-          })
-        })
-      }, 100), setTimeout(function () {
-        null != qSel('.isBkm') && ldJs(baseUrl + '/js/BookmarkPosts.min.js', 'bkm-js', !0, 'body', function () {
-          ldCss(baseUrl + '/css/BookmarkPosts.min.css', 'bkm-css')
-        })
-      }, 100), 'true' != isError && ('lazy' == PuSet.adsenseAds.loadType ? ldJs(baseUrl + '/js/AdsenseAds.min.js', "adstr-js", !0, 'body') : 'defer' == PuSet.adsenseAds.loadType && Defer.js(baseUrl + '/js/AdsenseAds.min.js', 'adstr-js')), lazyCustomJs())
-  }
-  var aryLzJsM = [];
-  function loadLzJsM() {
-    var e, t;
-    aryLzJsM.push(1), 'true' == isMobile && "" != PuSet.fontFamily.mobileFonts && ((t = (e = document).createElement('style')).id = "styleFonts", t.textContent = PuSet.fontFamily.mobileFonts, e.getElementsByTagName('head')[0].appendChild(t))
-  }
-  var lazyJs = !1;
-  window.addEventListener('scroll', function () {
-    (0 != document.documentElement.scrollTop && !1 === lazyJs || 0 != document.body.scrollTop && !1 === lazyJs) && (0 == aryLzJs.length && null == Pu.gLS('Lz_Js') && (loadLzJs(), Pu.sLS("Lz_Js", 1)), 0 == aryLzJsM.length && null == Pu.gLS("Lz_JsM") && (loadLzJsM(), Pu.sLS('Lz_JsM', 1)), null != qSel('#ckWrap') && null == Pu.gC('CookiePolicy') && Defer(function () {
-      ldCss(baseUrl + '/css/CookieConsent.min.css', 'ck-css', function () {
-        ldJs(baseUrl + '/js/CookieConsent.min.js', "ck-js", !0, 'body')
-      })
-    }, 5e3), scrollCustomJs(), 'true' != isError && 'scroll' == PuSet.adsenseAds.loadType && ldJs(baseUrl + '/js/AdsenseAds.min.js', 'adstr-js', !0, "body"), lazyJs = !0)
-  }, !0), qSel("body").addEventListener('click', e => {
-    0 == aryLzJs.length && null == Pu.gLS('Lz_Js') && (loadLzJs(), Pu.sLS('Lz_Js', 1)), 0 == aryLzJsM.length && null == Pu.gLS('Lz_JsM') && (loadLzJsM(), Pu.sLS('Lz_JsM', 1))
-  }), Pu.gLS('Lz_Js') && loadLzJs(), Pu.gLS('Lz_JsM') && loadLzJsM();
-  /*]]>*/
-</script>
+<!DOCTYPE html>
+<html style="background-color: #242222;">
+
+<head>
+
+</head>
+
+<body>
+  <video data-html5-video="" poster="https://m12.vudeo.co/i/05/00818/npxeahugtn3o_xt.jpg" width="640" height="360" src="https://m12.vudeo.co/2vp33xzf6avjdohiln3bxp4er37anp2rh5anxcdk4ynbx4g7s3hytwm2yy6a/v.mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <video data-html5-video=""
+            src="https://m12.vudeo.co/2vp33xzf6avjdohiln3bxp4er37anp2rh5anxcdk4ynbx4g7s3hxbe42yy6a/v.mp4"
+            poster="https://m12.vudeo.co/i/05/00818/npxeahugtn3o_xt.jpg" preload="none" playsinline="playsinline">
+            </video>
+
+  <IFRAME SRC="https://vudeo.co/embed-npxeahugtn3o.html" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=640 HEIGHT=360 allowfullscreen></IFRAME>
+
+
+
+  <p></p>
+</body>
+
+</html>
